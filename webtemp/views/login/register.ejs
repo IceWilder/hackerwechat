@@ -1,0 +1,98 @@
+
+  <body class="register-page">
+    <div class="register-box">
+      <div class="register-logo">
+        <a href="#"><b>唯</b>拍</a>
+      </div>
+
+      <div class="register-box-body">
+        <p class="login-box-msg">注册成新会员</p>
+        <form role="form" class="form-horizontal" novalidate>
+
+          <div class="control-group has-feedback">
+            <div class="controls">
+              <input type="text" class="form-control" name="login_name" id="login_name" placeholder="公众号名称" required data-validation-required-message="公众号名称不能为空!">
+              <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="control-group has-feedback">
+            <div class="controls">
+              <input type="number" class="form-control" name="mobile" id="mobile" placeholder="手机号" required
+                     data-validation-required-message="手机号不能为空!" data-validation-number-message="只能填数字！">
+              <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="control-group has-feedback">
+            <div class="controls">
+              <input type="password" class="form-control" name="password" id="password" placeholder="密码" required data-validation-required-message="密码不能为空!">
+              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="control-group has-feedback">
+            <div class="controls">
+              <input type="password" class="form-control" name="password2" id="password2" placeholder="重复密码" required
+                     data-validation-required-message="重复密码不能为空!" data-validation-match-match="password" data-validation-match-message="重复密码不一样！">
+              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="control-group has-feedback">
+            <div class="controls">
+              <input type="email" class="form-control" name="email" id="email" placeholder="邮箱" required data-validation-required-message="邮箱不能为空!"
+                     data-validation-email-message="邮箱格式不对！">
+              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+          </div>
+
+          <!--<div class="form-group has-feedback">
+            <input type="text" class="form-control" id="login_name" name="login_name" placeholder="昵称" required
+                   data-validation-required-message="昵称不能为空!"/>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>-->
+         <!-- <div class="form-group has-feedback">
+            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="手机号" required
+                   data-validation-required-message="手机号不能为空!"/>
+            <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+          </div>-->
+          <!--<div class="form-group has-feedback">
+            <input type="password" class="form-control" id="password" name="password" placeholder="密码" required
+                   data-validation-required-message="密码不能为空!"/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>-->
+          <!--<div class="form-group has-feedback">
+            <input type="password" class="form-control" id="password2" name="password2" placeholder="重复密码" required
+                   data-validation-required-message="重复密码不能为空!" data-validation-match-match="password" />
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>-->
+         <!-- <div class="form-group has-feedback">
+            <input type="mail" class="form-control" id="email" name="email"  placeholder="邮箱" required
+                   data-validation-required-message="邮箱不能为空!"/>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>-->
+          <div class="row">
+            <div class="col-xs-8">    
+              <div class="checkbox icheck">
+                <label>
+                  <input type="checkbox" checked id="checkTerms"> 我同意 <a href="#">唯拍网条款</a>
+                </label>
+              </div>                        
+            </div><!-- /.col -->
+            <div class="col-xs-4">
+              <button type="submit" class="btn btn-primary btn-block btn-flat">注册</button>
+            </div><!-- /.col -->
+          </div>
+        </form>        
+
+       <!-- <div class="social-auth-links text-center">
+          <p>- 或 -</p>
+          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat align-center"><i class="fa fa-qq"></i>QQ帐号登录</a>
+          <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat align-center"><i class="fa fa-weibo"></i> 微博帐号登录</a>
+        </div>-->
+
+        <a href="/login">已是会员</a>
+
+      </div><!-- /.form-box -->
+    </div><!-- /.register-box -->

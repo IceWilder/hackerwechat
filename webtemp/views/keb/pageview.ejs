@@ -1,0 +1,190 @@
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            页面统计
+        </h1>
+        <ol class="breadcrumb">
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Info boxes -->
+        <div class="row">
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="fa ion-ios-people-outline"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">首页浏览次数</span>
+                        <span class="info-box-number"><%=data.indexViews%></span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="ion  ion-ios-people-outline"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">商品浏览次数</span>
+                        <span class="info-box-number"><%=data.prodViews%></span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">文章浏览次数</span>
+                        <span class="info-box-number"><%=data.artViews%></span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">其它浏览次数</span>
+                        <span class="info-box-number"><%=data.otherViews%></span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+        <!-- Main row -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">浏览页面前十</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>排名</th>
+                                    <th>页面名称</th>
+                                    <th>浏览次数</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <%for(var i=0;i<data.highten_view.length;i++){%>
+                                    <tr>
+                                        <td><a href="#"><%=(i+1)%></a></td>
+                                        <td><a href="#"><%=data.highten_view[i].title%></a></td>
+                                        <td><%=data.highten_view[i].count%></td>
+                                    </tr>
+                                <%}%>
+                                </tbody>
+                            </table>
+                        </div><!-- /.table-responsive -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <a href="/keb/orders?tab=0&status=-1" class="btn btn-sm btn-primary btn-flat pull-right">查看所有订单</a>
+                    </div><!-- /.box-footer -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+        <!-- Main row -->
+        <div class="row">
+            <div class="col-md-6">
+                <!-- PRODUCT LIST -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">商品浏览量前十</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <ul class="products-list product-list-in-box">
+                            <%for(var i=0;i<data.hightenprods_view.length;i++){
+                                var prod=data.hightenprods_view[i];
+                            %>
+                            <li class="item">
+                                <!--<div class="product-img">-->
+
+                                <!--</div>-->
+                                <div class="product-info" style="margin-left:0px;">
+                                    <a href="javascript:;" class="product-title"><%=prod.name%><span class="label label-warning pull-right"><%=prod.rate%>%</span></a>
+                                <span class="product-description">
+                                </span>
+                                </div>
+                            </li>
+                            <%}%>
+                        </ul>
+                    </div><!-- /.box-body -->
+
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+            <div class="col-md-6">
+                <!-- PRODUCT LIST -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">商品曝光前十</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <ul class="products-list product-list-in-box">
+                            <%for(var i=0;i<data.hightenprods_expose.length;i++){
+                                var prod=data.hightenprods_expose[i];
+                            %>
+                            <li class="item">
+                                <!--<div class="product-img">-->
+                                <!--</div>-->
+                                <div class="product-info" style="margin-left:0px;">
+                                    <a href="javascript:;" class="product-title"><%=prod.name%><span class="label label-warning pull-right"><%=prod.rate%>%</span></a>
+                                    <span class="product-description">
+                                    </span>
+                                </div>
+                            </li>
+                            <%}%>
+                        </ul>
+                    </div><!-- /.box-body -->
+
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- PRODUCT LIST -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">商品点击购买前十</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <ul class="products-list product-list-in-box">
+                            <%for(var i=0;i<data.hightenprods_buy.length;i++){
+                                var prod=data.hightenprods_buy[i];
+                            %>
+                            <li class="item">
+                                <!--<div class="product-img">-->
+                                <!--</div>-->
+                                <div class="product-info" style="margin-left:0px;">
+                                    <a href="javascript:;" class="product-title"><%=prod.name%><span class="label label-warning pull-right"><%=prod.rate%>%</span></a>
+                                    <span class="product-description">
+                                    </span>
+                                </div>
+                            </li>
+                            <%}%>
+                        </ul>
+                    </div><!-- /.box-body -->
+
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </section><!-- /.content -->

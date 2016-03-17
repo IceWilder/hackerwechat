@@ -1,0 +1,35 @@
+body{
+    background-color: #f0eff5;
+    margin: 0;
+}
+.div{
+    background-color: white;
+    margin: 10px;
+    height: 120px;
+}
+.img{
+    width: 115px;
+    height: 91px;
+    margin-top: 14px;
+    margin-left: 8px;
+}
+.span1{
+    position: absolute;
+    margin-top:10px;
+    font-size: 25px;
+}
+.span2{
+    position: absolute;
+    margin-top:80px;
+    font-size: 14px;
+}
+.span3{
+    position: absolute;
+    margin-top:10px;
+    font-size: 25px;
+}
+.span4{
+    position: absolute;
+    margin-top:80px;
+    font-size: 14px;
+}

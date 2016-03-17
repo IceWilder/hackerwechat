@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="/stylesheets/biz/auth/addmanager.css" xmlns="http://www.w3.org/1999/html"/>
+
+
+<div class="">
+    <div class="row">
+        <div class="div-row1">
+                <a href="/auth/adminlist" class="a-row1" >管理员列表</a><span class="divider">/</span></li>
+                <label class="label-row1">添加管理员</label>
+        </div>
+    </div>
+
+    <div class="row" >
+        <form id="adminadd-form" style="margin:0 auto;">
+            <div class="div-row" style="margin-top:20px;">
+                <label>用户名称：</label>
+                <input type="text" data-rules="{required:true}" value="" name="login_name" id="login_name">
+                </input>
+                <font color="red">（*必填）</font>
+            </div>
+
+            <div class="div-row">
+                <label>手机号码：</label>
+                <input type="text" data-rules="{required:true}" value="" name="mobile" id="mobile">
+                </input>
+                <font color="red">（*必填）</font>
+            </div>
+
+
+            <div class="div-row">
+                <label>用户邮箱：</label>
+                <input type="text" data-rules="{required:true,email:true}" value="" name="email" id="email">
+                </input>
+                <font color="red">（*必填）</font>
+            </div>
+
+            <div class="div-row">
+                <label>密码设置：</label>
+                <input type="password" data-rules="{required:true}" value="" name="password" id="password">
+                </input>
+                <font color="red">（*必填）</font>
+            </div>
+
+            <div class="div-row">
+                <label>密码确认：</label>
+                <input type="password" data-rules="{required:true,password:true}"  data-messages="{password:'两次输入的密码必须一致'}"    value="" name="password" id="password">
+                </input>
+                <font color="red">（*必填）</font>
+            </div>
+
+            <div class="div-row">
+                <label>角色选择：</label>
+                <div id="sel" style="width:200px;margin:-40px;margin-left:65px;">
+                    <input type="hidden" id="role_id" name="role_id" data-rules="{required:true}">
+                </div>
+            </div>
+
+
+            <a style="width:230px; margin-top:50px;" class="btn btn-green" id="smtBtn" >确定提交</a>
+
+        </form>
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    KISSY.use(['io','dom','bui/form','bui/select'],function(S,IO,DOM,Form,Select){
+        IO.post("/api/getUserRole",{},function(roles) {
+            var items = [];
+                S.each(roles, function(role){
+
+                if(role.role_name != 'admin'){
+                    var item = {};
+                    item.text = role.role_text;
+                    item.value = role.role_id;
+                    items.push(item);
+                }
+
+            });
+
+            var select = new Select.Select({
+                render:'#sel',
+                valueField:'#role_id',
+                items:items
+            });
+            select.render();
+
+            //默认选择地一个
+            select.setSelectedValue(items[0].value);
+
+        });
+
+        //表单验证
+        var valifForm = new Form.Form({
+            srcNode:'#adminadd-form'
+        }).render();
+        $("#smtBtn").on('click',function() {//确定提交事件
+            var formdata = {};
+            var form = $("#adminadd-form").all('input[name],textarea[name], select[name]');
+            form.each(function(item, index) {
+                formdata[$(item).attr('name')] = $(item).val();
+            });
+
+            if(valifForm.isValid()) {//验证通过则提交表单
+                var params = {formdata:JSON.stringify(formdata)};
+                IO.post("/api/insertAdmin",params,function(data) {
+                    window.parent._Alert(data.msg,data.code==0?'success':'error');
+                    if(data.code == 0){
+                        parent.$("#dmp-iframe").attr('src','/auth/adminlist');
+                    }
+                },"json");
+            }
+        });
+
+    });
+</script>

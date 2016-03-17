@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="/stylesheets/biz/auth/rolelist.css" />
+
+<div class="main">
+    <div class="div-row">
+        <div class="role-div">
+                <label  class="rolelabel1">角色管理</label>
+                <a href="/auth/addrole"><button class="rolebtn1" >添加角色</button></a>
+        </div>
+        <div class="rolerow2" > </div>
+        <div id="gcontrol-grid" style="margin-top: 8px; width: 99%; margin-left: 6px; margin-right:6px;"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    KISSY.use(['io','bui/grid','bui/data','bui/overlay'],function(S,IO,Grid,Data){
+        var $= S.all;
+        var Grid = Grid,
+                Store = Data.Store,
+                columns = [
+                    {title : 'ID',dataIndex :'role_id',elCls:"center",visible:false,sortable : false,width:120},
+                    {title : '角色名',dataIndex :'role_name',elCls:"center",sortable : false,width:200},
+                    {title : '角色描述',dataIndex : 'role_text',elCls:"center",sortable : false,width:300},
+                    {title : '操作',elCls:"center",sortable : false,renderer:function(value,obj,index) {
+                        if(obj.role_name == 'admin')return "";
+                        return "<a href='/auth/addrole?role_id="+obj.role_id+"'>编辑</a>-<a class='del-btn' data-roleid='"+obj.role_id+"' >移除</a>";
+                    }}
+
+                ];
+
+        var store = new Store({
+            url : '/api/getRole',
+            autoLoad:true, //自动加载数据
+            proxy : {//设置请求相关的参数
+                method : 'get',
+                dataType : 'json', //返回数据的类型
+                limitParam : 'rows', //一页多少条记录
+                pageIndexParam : 'page', //页码
+                startParam : 'startNum', //起始记录
+                pageStart : 1
+            },
+            root : 'rows',
+            totalProperty : 'total',
+            pageSize:10  // 配置分页数目
+        });
+        var grid = new Grid.Grid({
+            render:'#gcontrol-grid',
+            idField : 'id', //自定义选项 id 字段
+            columns : columns,
+            loadMask: true, //加载数据时显示屏蔽层
+            frontSortable:false,//是否进行前台排序
+            innerBorder: true, // 默认为true
+          //  width:'100%',//这个属性一定要设置
+            forceFit : true, //自适应宽度
+            store: store,
+            itemStatusFields : { //设置数据跟状态的对应关系
+                selected : 'selected',
+                disabled : 'disabled'
+            },
+            //      plugins : [Grid.Plugins.CheckSelection],// 插件形式引入多选表格,自适应宽度Grid.Plugins.AutoFit
+            emptyDataTpl : '<div class="centered"><img alt="Crying" src="http://img03.taobaocdn.com/tps/i3/T1amCdXhXqXXXXXXXX-60-67.png"><h2>查询的数据不存在</h2></div>',
+            // 底部工具栏
+            bbar:{
+                // pagingBar:表明包含分页栏
+                pagingBar:true
+            },
+            cellclick:true,
+            listeners : {
+                aftershow : function() {
+                    $(".del-btn").on("click",function(e){
+                        var self = this;
+                        window.parent._Confirm('确认要删除吗？',function(){
+                            var params = {};
+                            params.role_id = $(self).attr("data-roleid");
+                            IO.post("/api/delRole",params,function(data) {
+                                window.parent._Alert(data.msg,data.code==0?'success':'error');
+                                if(data.code == 0){
+                                    store.load();
+                                }
+                            });
+                        },'question');
+                    });//
+                }
+            }
+        });
+
+        grid.render();
+
+    });
+</script>

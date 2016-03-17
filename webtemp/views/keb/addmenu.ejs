@@ -1,0 +1,84 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="">
+    <form role="form" class="form-horizontal" novalidate>
+        <input type="hidden" id="N_host" value="<%=host%>"/>
+        <input type="hidden" id="N_novem" value="<%=novem%>"/>
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                添加菜单
+            </h1>
+            <ol class="breadcrumb">
+                <li class="active"><i class="fa fa-gift"></i> 自定义菜单</li>
+                <li class="active">添加菜单</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+
+                <!-- left column -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title">菜单信息</h3>
+                            <button type="submit" class="btn btn-primary pull-right" id="saveBtn"><i class="fa fa-save"></i>&nbsp;保存</button>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <!-- text input -->
+                            <div class="control-group">
+                                <label class="control-label" for="name">标题</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="标题" required data-validation-required-message="标题不能为空!">
+                                </div>
+                            </div>
+
+                            <!-- select -->
+                            <div class="control-group">
+                                <label class="control-label" for="parentMenu">菜单等级</label>
+                                <div class="controls">
+                                    <select class="form-control" id="parentMenu" name="parentMenu" >
+                                        <option value="0" selected>一级菜单</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="parentMenu">菜单类型</label>
+                                <div class="controls">
+                                    <select class="form-control" id="type" name="type" >
+                                        <option value="click" selected>click</option>
+                                        <option value="view" selected>view</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="name">菜单key</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control" name="key" id="key" placeholder="菜单key" required data-validation-required-message="菜单key不能为空!">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="name">菜单链接</label>
+                                <div class="controls">
+                                    <input type="text" style="width: 80%;display: inline-block;" class="form-control" name="url" id="url" placeholder="菜单链接" required data-validation-required-message="菜单链接不能为空!">
+                                    <a href="javascript:;" id="N_addinlink">+添加站内链接</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- /.box -->
+
+
+                </div><!--/.col (left) -->
+
+            </div>   <!-- /.row -->
+        </section>
+        </form>
+</div>

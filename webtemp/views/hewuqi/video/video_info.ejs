@@ -1,0 +1,43 @@
+<style type="text/css">
+    .content-header{
+        margin-bottom: 10px;
+        height: 70px;
+        line-height: 70px;
+    }
+    .btn{
+        position: relative;
+        bottom: 7px;
+    }
+    p{
+        display: block;
+        min-height:40px;
+        line-height: 40px;
+    }
+
+</style>
+<section class="content-header">
+    <h1 style="display:inline-block;">用户昵称：<%=data.nick_name%></h1>&nbsp;&nbsp;
+   <button type="button" class="btn btn-info btn-lg">播放量:<%= data.play_num%></button>
+    <button class="btn btn-primary btn-lg active" id="btn-del" video_id="<%= data.video_id%>" style="float: right">删除该视频</button>
+</section>
+<section class="content">
+    <%if(data.category==0){%>
+    <p>舞种:hippop</p>
+    <%}else if(data.category==1){%>
+    <p>舞种:poping</p>
+    <%}else if(data.category==2){%>
+    <p>舞种:breaking</p>
+    <%}else{%>
+    <p>舞种:其它</p>
+    <%}%>
+    <p>上传时间:<%=data.create_time%></p>
+    <p>点赞数:<%=data.video_like%>&nbsp;&nbsp;收藏数:<%=data.collect_num%>&nbsp;&nbsp;评论数:<%=data.comments_num%>&nbsp;&nbsp;转发数:<%=data.share_num%>&nbsp;&nbsp;</p>
+    <p>视频介绍:<%=data.video_intro%></p>
+    <p>视频链接:<a href="<%=data.video_url%>"><%=data.video_url%></a></p>
+    <hr>
+    <div style="border-bottom:1px solid darkgrey;"></div>
+</section>
+
+<!--<script src="jquery.js"></script>-->
+<script type="text/javascript" src="/plugins/My97DatePicker/WdatePicker.js"></script>
+

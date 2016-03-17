@@ -1,0 +1,353 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .addprodCate-page {
+        width: 100%;
+    }
+
+    .addprodCate-form {
+        padding: 20px;
+    }
+
+    .manage-ul {
+        width: 100%;
+        border-bottom: 3px solid #3c8db8;
+        margin-bottom: 10px;
+    }
+
+    .manage-ul li {
+        float: left;
+        height: 60px;
+        line-height: 60px;
+        position: relative;
+        padding: 0 30px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .addprod-btn {
+        float: right;
+        font-size: 16px;
+        padding: 12px 20px;
+        color: #fff;
+        background: #00a65a;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .manage-ul li.current-li {
+        color: #5a8cad;
+    }
+
+    .content {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .content table {
+        width: 100%;
+    }
+
+    .content-head {
+        width: 100%;
+        height: 60px;
+        background: #e6e6e6;
+        line-height: 60px;
+    }
+    .content-heads {
+        width: 100%;
+        height: 40px;
+        background: white;
+        line-height: 40px;
+    }
+
+    .all-select {
+        width: 24px;
+        height: 24px;
+        margin: 16px;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    .content-head span {
+        vertical-align: middle;
+    }
+
+    .Deletion {
+        /*font-size: 18px;*/
+        /*color: #000;*/
+        /*padding: 8px 66px;*/
+        height: 30px;
+        line-height: 30px;
+        background: #fff;
+        border: 1px solid #b1b1b1;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    .Delpro {
+        /*font-size: 18px;*/
+        /*color: #000;*/
+        /*padding: 8px 66px;*/
+        height: 30px;
+        line-height: 30px;
+        background: #fff;
+        border: 1px solid #b1b1b1;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    .prodCate-table tr {
+        height: 30px;
+    }
+
+    .prodCate-table tr td {
+        height: 29px;
+        line-height: 29px;
+        border-bottom: 1px solid #e7e6e6;
+    }
+    td.check-td{width: 80px;}
+
+    td.babyname{
+        width: 25%;
+    }
+    td.move {
+        width: 10%;
+    }
+
+    td.date {
+        width: 20%;
+    }
+
+    td.operate {
+        width: 20%;
+    }
+
+    .header-tr {
+        border-top: 2px solid #e1e1e1;
+        background: #f4f4f4;
+    }
+
+    .checkbox {
+        width: 16px;
+        height: 16px;
+        margin-left: 10px;;
+    }
+
+    .arrow {
+        width: 0;
+        height: 0;
+        display: inline-block;
+        border-top: 7px solid transparent;
+        border-left: 10px solid #000000;
+        border-bottom: 7px solid transparent;
+    }
+
+    .arrow-turn{transform: rotate(90deg);
+    }
+
+    .second-category-line {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        margin-left: 15px;
+    }
+
+    .third-category-line {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        margin-left: 30px;
+    }
+
+    .shift-top, .shift-down {
+        width: 8px;
+        height: 10px;
+        background: #d7d7d7;
+        display: inline-block;
+        margin: 4px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .top-arrow {
+        width: 0;
+        height: 0;
+        display: inline-block;
+        border-right: 7px solid transparent;
+        border-left: 7px solid transparent;
+        border-bottom: 6px solid #d7d7d7;
+        position: absolute;
+        top: -4px;
+        left: -2.5px;
+    }
+
+    .down-arrow {
+        width: 0;
+        height: 0;
+        display: inline-block;
+        border-right: 7px solid transparent;
+        border-left: 7px solid transparent;
+        border-top: 6px solid #d7d7d7;
+        position: absolute;
+        bottom: -4px;
+        left: -2.5px;
+    }
+
+    .shift-top:hover, .shift-down:hover {
+        background: #3475db;
+    }
+
+    .shift-top:hover .top-arrow {
+        border-bottom: 6px solid #3475db;
+    }
+
+    .shift-down:hover .down-arrow {
+        border-top: 6px solid #3475db;
+    }
+
+    .gategory-name {
+        width: 123px;
+        height: 21px;
+        border: 1px solid #e8e8e8;
+        border-top: 2px solid #e8e8e8;
+        border-bottom: 2px solid #e8e8e8;
+    }
+
+    .delete, .check {
+        padding: 5px;
+        text-decoration: none;
+        color: #4f85cf;
+    }
+    .baby-input{
+        height:40px;
+        line-height: 40px;
+        margin-left: 10px;
+    }
+    .price-input{
+        height:40px;
+        line-height: 40px;
+        width: 60px;
+    }
+    .sale-stutas{
+        height:40px;
+        line-height: 40px;
+    }
+    .gasale-stutas{
+        height:30px;
+        line-height: 30px;
+        margin-left: 20px;
+    }
+    .prodCate-table tr td{
+        height: 60px;
+        line-height: 60px;
+    }
+</style>
+<body class="addprodCate-page">
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1 style="margin-left: -200px;">
+商品列表
+<!--<small>所有拍卖商品</small>-->
+</h1>
+</section>
+<div class="addprodCate-box" style="margin-left: -240px;">
+    <form role="fome" class="addprodCate-form">
+        <ul class="manage-ul">
+        </ul>
+        <div class="content">
+            <header class="content-head">
+                <input type="text" class="baby-input" placeholder="请输入宝贝名称" id="keyword" name="keyword"/>
+                <label style="margin-left: 40px;">价格：</label><input type="text" class="price-input" id="minPrice" name="minPrice"/> 一
+                <input type="text" class="price-input" id="maxPrice" name="maxPrice"/>
+                <label style="margin-left: 40px;">状态：</label>
+                    <select class="sale-stutas" id="shared" name="shared">
+                        <option value="">全部</option>
+                        <option value="1">出售中</option>
+                        <option value="0">已下架</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-primary" id="searchBtn" style="margin-left: 20px;">搜&nbsp;索</button>
+            </header>
+            <table class="prodCate-table" id="product-table" border="0" cellspacing="0" cellpadding="0">
+
+                <tr class="header-tr">
+                    <header class="content-heads">
+                        <input type="checkbox" class="all-select">
+                        <span>全选</span>
+                        <input type="button" class="Deletion" value="批量上架" style="margin-top: -2px;">
+                        <input type="button" class="Deletion" value="批量下架" style="margin-top: -2px;">
+                        <input type="button" class="Delpro" value="批量删除" style="margin-top: -2px;">
+                    </header>
+                </tr>
+
+                <thead>
+                <tr class="header-tr">
+                    <td class="check-td"></td>
+                    <td class="babyname">宝贝名称</td>
+                    <td class="move">价格</td>
+                    <td class="move">所属分类</td>
+                    <!--<td class="move">编辑分类</td>-->
+                    <td class="date">创建时间</td>
+                    <td class="move">状态</td>
+                    <td class="operate">操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <!--一级分类-->
+                <%for(var i=0;i<pros.length;i++){%>
+                <tr class="first-category">
+                    <td class="check-td"><input class="checkbox" type="checkbox"  value=<%=pros[i].prod_id%>> </td>
+                    <td class="check-td"><img src="<%=pros[i].url%>" style="width: 40px; height: 40px;"> <%=pros[i].name%></td>
+                    <td class="check-td"><%=pros[i].price%></td>
+                    <!--<td class="check-td"><%=pros[i].content%></td>-->
+                    <td class="check-td"><%=pros[i].content%></td>
+                    <td class="check-td"><%=pros[i].createdDate%></td>
+                    <td class="check-td status-<%=pros[i].prod_id%>">
+                        <%if(pros[i].shared==0){
+                        %>
+                        已下架
+                        <%}if(pros[i].shared==1){%>
+                        出售中
+                        <%}%></td>
+                    <td class="operate"><a href=editProd?id=<%=pros[i].prod_id%> class="delete">编辑</a>
+                        <a href="javascript:void(0)" prodids="<%=pros[i].prod_id%>" class="dels">删除</a>
+                        <%if(pros[i].shared==0){
+                        %>
+                            <a href="javascript:void(0)" shareid="<%=pros[i].prod_id%>" class="shared">上架</a>
+                        <%}else{%>
+                            <a href="javascript:void(0)" shareid="<%=pros[i].prod_id%>" class="shared">下架</a>
+                        <%}%>
+                    </td>
+                </tr>
+                <%}%>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div style=" float: right;clear: both;padding-top: 20px;padding-bottom: 50px;">
+            <% if(page>1){%>
+            <a href="/keb/products?page=<%= page-1%>" class="btn btn-primary" style="margin-top: -70px;margin-right: 20px;">上一页</a>
+            <%}%>
+            <% if(page*10<count){%>
+            <a href="/keb/products?page=<%= parseInt(page)+1%>" class="btn btn-primary" style="margin-top: -70px;margin-right: 20px;">下一页</a>
+            <%}%>
+        </div>
+
+    </form>
+</div>
+</div>
+
+</body>

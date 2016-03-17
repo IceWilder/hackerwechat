@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="dmp-keb" basedir="." default="Deploy">
+  <property name="target.dir" value="/var/www/node/keb" />
+  <property name="source.dir" value="/var/lib/hudson/jobs/dmp-keb/workspace" />
+
+    <target name="Env">
+        <tstamp>
+            <format property="time.now" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+        <echo message="Ant:   ${ant.version}" />
+        <echo message="Java:  ${java.vm.name} ${java.version}" />
+        <echo message="Time:  ${time.now}" />
+    </target>
+
+
+    <target name="Deploy" depends="Env">
+        <copy todir="${target.dir}" overwrite="true" force="true">
+            <fileset dir="${source.dir}"></fileset>
+        </copy>
+    </target>
+
+</project>

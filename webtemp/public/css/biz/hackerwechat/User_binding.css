@@ -1,0 +1,106 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(239,239,246);
+}
+.userBind{
+    width: 100%;
+    height: 130px;
+}
+.userBind img{
+    margin-top:88px;
+    margin-left: 8%;
+}
+.userBind .userBindTxt{
+    color: rgb(148,200,224);
+    font-size: 18px;
+    position: relative;
+    top: -5px;
+    left: 4px;
+    /*font-family: 微软雅黑;*/
+}
+.content{
+    width: 85%;
+    margin-left: 10%;
+    margin-right: 4.9%;
+}
+.content .userName{
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    font-size: 18px;
+
+}
+.userName .userNameIn{
+    width: 77%;
+    background-color: #fff;
+    border-radius: 3px;
+    border-style: none;
+    height: 38px;
+}
+.checkName{
+    width: 100%;
+    height: 40px;
+    margin-top: 15px;
+
+}
+.checkName .checkNameTxt{
+    font-size: 18px;
+
+}
+.checkName .checkNameIn{
+    width: 40%;
+    background-color: #fff;
+    border-radius: 3px;
+    border-style: none;
+    height: 38px;
+}
+.checkName .getBtn{
+    height: 38px;
+    width:33%;
+    margin-left: 3%;
+    border-radius: 3px;
+    border-style: none;
+    background-color: rgb(148,200,224);
+    color: #fff;
+}
+.sureBtn{
+    width: 96%;
+}
+.sureBtn .sure_btn{
+    width: 100%;
+    height: 40px;
+    background-color: rgb(148,200,224);
+    color: #fff;
+    font-size: 18px;
+    border-style: none;
+    border-radius: 3px;
+    margin-top: 30px;
+}
+#divalt{
+    width: 65%;
+    height: 195px;
+    margin-top: -130px;
+    border-radius: 8px;
+}
+#divalt #divalt1{
+    margin-top: 50px;
+    font-size: 20px;
+    color: rgb(148,200,224);
+    text-align: center;
+}
+#divalt .tishi{
+    font-size: 1px;
+    color: rgb(136,137,138);
+}
+.a2 .btn{
+    width: 160px;
+    height: 30px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: rgb(148,200,224);
+    color: #fff;
+    font-size: 10px;
+
+
+}

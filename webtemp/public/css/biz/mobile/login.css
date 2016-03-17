@@ -1,0 +1,21 @@
+.block.block-form .block-item.login-rule {
+    padding: 10px 0px;
+}
+.block.block-form .block-item label.login-rule-img {
+    display: table-cell;
+    width: 40px;
+    color: #999;
+    padding: 0;
+    vertical-align: middle;
+}
+.block.block-form .block-item p.login-rule-title {
+    font-size: 14px;
+}
+.block.block-form .block-item p.login-rule-content {
+    font-size: 14px;
+    color: #999;
+}
+.block.block-form .block-item label.login-rule-img > img{
+    height: 32px;
+    width: 30px;
+}

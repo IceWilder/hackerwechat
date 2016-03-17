@@ -1,0 +1,149 @@
+
+<link rel="stylesheet" href="/stylesheets/biz/auth/addrole.css" />
+
+<div class="container">
+    <form id="authForm" >
+    <div class="row-all">
+        <input type="hidden" id="role_id" name="role_id" value="<%= role_id%>" />
+        <div class="row-1">
+            <div class="row-1-1">
+              <label class="lable1">角色名称：</label>
+              <input class="input1" data-rules="{required:true}" id="role_name" name="role_name" placeholder="英文或拼音"> </input><font color="red">*</font>
+
+            </div>
+            <div class="row-1-1" style="margin-top: 15px;">
+                <label class="lable1">显示名称：</label>
+                <input class="input1" data-rules="{required:true}" id="role_text" name="role_text" placeholder="中文"> </input><font color="red">*</font>
+
+            </div>
+
+            <div class="row-1-2">
+                <lable class="lable1"> 角色描述：</lable>
+                <textarea class="textarea-class" name="remark" id="remark"></textarea>
+            </div>
+
+        </div>
+
+
+    </div>
+
+     <div class="div-row2"><lable class="lable1"> 选择权限：</lable> </div>
+
+    <div class="div-table">
+        <table class="table-class " id="authTable"></table>
+
+
+
+        <div class="div-row3">
+
+            <div class="div-row3-1" >
+                <a class="btn-class1 btn btn-green" id="submitBtn">保存角色</a>
+            </div>
+        </div>
+
+    </div>
+
+    </form>
+
+
+</div>
+
+<script type="text/javascript">
+    KISSY.use(['io','dom','bui/form'],function(S,IO,DOM,Form){
+        IO.post("/api/getAllAuth",{},function(data) {
+            //console.log(data);
+            var $ = S.all;
+            var html="";
+            S.each(data, function (mod,index) {
+                html += '<tr class="tr-1"><td ><input type="checkbox" class="checkbox-1 module parmod-'+mod.auth_id+'" name="auth-'+mod.auth_id+'" id="auth-'+mod.auth_id+'" value="'+mod.auth_id+'"> </input>'+mod.text+'</td> <td >';
+                S.each(mod.children,function(ch,ind){
+                    html += '<input type="checkbox" class="checkbox-1 item parent-'+ch.parent_id+'" data-parent="'+ch.parent_id+'"  id="auth-'+ch.auth_id+'" name="auth-'+ch.auth_id+'" value="'+ch.auth_id+'"> </input>&nbsp;&nbsp;'+ch.text+'&nbsp;&nbsp;';
+
+                });
+                html += '</td></tr>';
+
+            });
+            $("#authTable").html(html);
+
+            $(".module").on('click',function(e){
+                if($(this).prop("checked")){
+                    $(".parent-"+$(this).val()).attr("checked","checked");
+                }else{
+                    $(".parent-"+$(this).val()).removeAttr("checked");
+                }
+            });
+
+            $(".item").on('click',function(e){
+                var parentid = $(this).attr("data-parent");
+                if($(this).prop("checked")){
+                    $(".parmod-"+parentid).attr("checked","checked");
+
+                }else{
+                    var uncheck = true;
+                    S.each($(".parent-"+parentid),function(item,index){
+                        if($(item).prop("checked")){
+                            uncheck= false;
+                        }
+                    });
+
+                    if(uncheck){
+                        $(".parmod-"+parentid).removeAttr("checked");
+                    }
+                }
+            });
+
+
+            var role_id =  $("#role_id").val();
+            if(role_id && role_id != ''){
+                IO.post("/api/getByRoleid",{role_id:role_id},function(role) {
+
+                    $("#role_name").val(role.role_name);
+                    $("#role_text").val(role.role_text);
+                    $("#remark").val(role.remark);
+
+                    var authList = role.authList;
+                    S.each(authList,function(auth,index){
+                        $("#auth-"+auth.auth_id).attr("checked","checked");
+                    });
+
+
+                });
+            }
+
+        });
+
+        //表单验证
+        var valifForm = new Form.Form({
+            srcNode:'#authForm'
+        }).render();
+        $("#submitBtn").on('click',function() {//确定提交事件
+            var formdata = {};
+            var authArr = [];
+            formdata["role_id"] = $("#role_id").val();
+            formdata["role_name"] = $("#role_name").val();
+            formdata["role_text"] = $("#role_text").val();
+            formdata["remark"] = $("#remark").val();
+
+            var authCh = $(".checkbox-1");
+            S.each(authCh,function(auth,index){
+                if($(auth).prop("checked"))
+                    authArr.push($(auth).val());
+            });
+
+            formdata.autharr = authArr.join(',');
+
+            if(valifForm.isValid()) {//验证通过则提交表单
+                var params = {formdata:JSON.stringify(formdata)};
+                IO.post("/api/addRole",params,function(data) {
+                    window.parent._Alert(data.msg,data.code==0?'success':'error');
+                    if(data.code == 0){
+                        parent.$("#dmp-iframe").attr('src','/auth/rolemana');
+                    }
+
+                });
+            }
+        });
+
+
+    });
+</script>

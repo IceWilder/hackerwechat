@@ -1,0 +1,49 @@
+<style type="text/css">
+    .content-header{
+        margin-bottom: -30px;
+        line-height: 70px;
+    }
+    p{
+        display: block;
+        min-height:40px;
+        line-height: 40px;
+    }
+    .bill{
+        width: 430px;
+        height: 224px;
+        margin-top: 20px;
+        background-color: darkgrey;
+
+    }
+    .bill img{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<section class="content-header">
+    <h1>课程名称:<%=data.club_name%></h1>&nbsp;&nbsp;
+</section>
+
+
+<section class="content">
+    <p>社长(负责人):<%=data.manager%></p>
+    <p>学校:<%=data.school%></p>
+    <p>社团介绍:<%=data.club_intro%></p>
+    <p>社团联系方式:<%=data.club_contact%></p>
+    <p>社团宣传视频链接:<a href="<%=data.video_url%>"><%=data.video_url%></a></p>
+    <div style="border-bottom:1px solid darkgrey;"></div>
+</section>
+<section class="content">
+    <div class="bill">
+    <img src="<%=data.club_one_pic%>">
+    </div>
+    <div class="bill">
+        <img src="<%=data.club_two_pic%>">
+        <input type="file" style="display: none">
+    </div>
+</section>
+<a style="position: relative;left: 30px" href="/hewuqi/editClub?club_id=<%=data.club_id%>" class="btn btn-primary btn-lg active" role="button">修改社团信息</a>
+
+<!--<script src="jquery.js"></script>-->
+<script type="text/javascript" src="/plugins/My97DatePicker/WdatePicker.js"></script>
+

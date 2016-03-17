@@ -1,0 +1,44 @@
+.nm-titlebar {
+    margin-top: 20px;
+    height: 45px;
+    font-size: 100%;
+}
+
+.nm-titlebar h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.6rem;
+}
+/**
+  * Titlebar Theme: default
+  */
+.nm-titlebar-default {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: transparent;
+    border-bottom: 1px solid #dedede;
+    line-height: 44px;
+}
+.nm-titlebar-default a {
+    color: #0e90d2;
+}
+.nm-titlebar-default .nm-titlebar-title {
+    position: relative;
+    padding-left: 12px;
+    color: #0e90d2;
+    font-size: 18px;
+    text-align: left;
+    font-weight: bold;
+}
+.nm-titlebar-default .nm-titlebar-title:before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 8px;
+    bottom: 8px;
+    border-left: 3px solid #0e90d2;
+}

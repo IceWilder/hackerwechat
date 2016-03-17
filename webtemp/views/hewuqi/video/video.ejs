@@ -1,0 +1,64 @@
+<style type="text/css">
+.search-header{
+    margin-left: 30px;
+    position: relative;
+    height: 160px;
+}
+.search-header .search-header-rows1{
+    height: 33%;
+    line-height: 53px;
+}
+.search-header-rows1 .btn{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.search-header-rows1 .form-search{
+    margin-top: 9px;
+}
+</style>
+<div class="search-header">
+
+    <div class="search-header-rows1" id="search-header-rows1">
+        <div class="pull-left">选择舞种</div>
+        <button type="button" class="btn btn-primary" id="rows1-btn">全部</button>
+
+        <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+        <button type="button" class="btn btn-default" indexid="0">Hippop</button>
+
+        <!-- 表示一个成功的或积极的动作 -->
+        <button type="button" class="btn btn-default" indexid="1">Poping</button>
+        <button type="button" class="btn btn-default" indexid="2">Breaking</button>
+
+        <!-- 表示一个成功的或积极的动作 -->
+        <button type="button" class="btn btn-default" indexid="3">其它</button>
+    </div>
+    <div class="search-header-rows1" id="search-header-rows2">
+        <div class="pull-left">选择排序方式</div>
+        <button type="button" class="btn btn-primary rows2-btn0" ordertype="0">上传时间</button>
+
+        <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+        <button type="button" class="btn btn-default rows2-btn1" ordertype="1">播放量</button>
+
+    </div>
+    <div class="search-header-rows1" id="search-header-rows3">
+
+    <form class="bs-example bs-example-form form-search" role="form">
+        <div class="input-group col-xs-5">
+            <input type="text" id="query"  class="form-control search-query" placeholder="搜索视频" aria-describedby="basic-addon2">
+            <span class="glyphicon glyphicon-search input-group-addon" id="basic-addon2"></span>
+        </div>
+
+    </form>
+    </div>
+
+</div>
+
+
+<section class="content">
+
+    <div class="role_content">
+        <table class="table_list" id="table_my_toast"></table>
+        <!-- 分页框 -->
+        <div class="page_control" id="paging_my_toast"><ul></ul></div>
+    </div>
+</section><!-- /.content -->

@@ -1,0 +1,151 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgba(240,239,245,1);
+}
+
+
+
+.hacker-header{
+    margin-top: 10px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 95%;
+    height: 250px;
+    background-image: url("http://c.36krcnd.com/nil_class/0c5b5d61-c492-454f-a1be-2b7fc8ab9254/robotboss.jpg!heading");
+    border: 1px solid #ffffff;
+    background-size: cover;
+    /*position: absolute;*/
+    /*top: 10px;*/
+
+}
+.header-div{
+    margin-top: 150px;
+    width: 100%;
+    height: 40px;
+    /*border: 1px solid #fff;*/
+
+    background:rgba(255, 255, 255, 0.9) none repeat scroll 0 0 !important;/*实现FF背景透明，文字不透明*/
+    filter:Alpha(opacity=90); background:#fff;/*实现IE背景透明*/
+}
+.header-text{
+    /*margin-top: 150px;*/
+    /*margin-left: 10px;*/
+    color: black;
+    margin-top: 4px;
+    padding-left: 10px;
+
+
+
+
+}
+.infoDetail{
+    width: 100%;
+    height: 25%;
+    background-color: #fff;
+}
+.detail-left{
+    float: left;
+}
+.detail-left .teacher{
+    margin-top: 7px;
+    margin-left: 4px;
+}
+.detail-left .left-down{
+  position: relative;
+    top: -5px;
+}
+
+.detail-left .place{
+    font-size: 1px;
+}
+.detail-left .time{
+    font-size: 1px;
+}
+
+.detail-right .applyTime{
+    font-size: xx-small;
+    color: #8a6d3b;
+    float: left;
+    position: absolute;
+    top: 190px;
+    right: 10px;
+}
+/*.detail-right .applyBtn{*/
+    /*width: 70px;*/
+    /*height: 25px;*/
+    /*background-color: rgba(244,198,63,1);*/
+    /*position: absolute;*/
+    /*right: 15px;*/
+    /*top: 240px;*/
+    /*border-radius: 5px;*/
+/*}*/
+.applyBtn .apply-text{
+    background-color: rgba(244,198,63,1);
+    font-size: xx-small;
+    position: absolute;
+    right: 20px;
+    top: 220px;
+    border-radius: 5px;
+    border-style: none;
+
+    color: #fff;
+
+    margin-left: 15%;
+
+}
+
+
+.content{
+    width: 94.44%;
+    height: 110px;
+    border: 1px solid #cccccc;
+    box-shadow: 2px 4px 2px #cccccc;
+    margin-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    background-color: #fff;
+}
+.content .image img{
+    width: 35%;
+    height: 80%;
+   margin-top:9px;
+    background-size: cover;
+    float: left;
+
+
+
+}
+.content .text{
+    width: 60%;
+    height: 100%;
+    float: left;
+    padding-left: 10px;
+    position: relative;
+    top: -20px;
+
+
+}
+.text .text1{
+    font-size: 15px;
+}
+
+.text .text2{
+
+    font-size: 4px;
+    position: relative;
+    top: -15px;
+
+}
+.content .dec{
+    width: 60px;
+    height: 20px;
+    background-color:rgba(131,183,215,1);
+    color: white;
+    float: right;
+    font-size: 1px;
+    line-height: 20px;
+    text-align: center;
+    padding: 1px;
+
+}

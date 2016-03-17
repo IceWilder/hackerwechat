@@ -1,0 +1,61 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            店铺配置
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active"><i class="fa fa-wechat"></i> 设置</li>
+            <li class="active">基本参数</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <form role="form" class="form-horizontal" novalidate id="wxconfForm">
+
+            <div class="row">
+
+                <!-- left column -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header">
+                                <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-save"></i>&nbsp;保存</button>
+                            </div><!-- /.box-header -->
+                        <!-- form start -->
+                            <div class="box-body">
+
+                                <div class="control-group">
+                                    <label class="control-label" for="account">店铺名称</label>
+                                    <div class="controls">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="店铺名称" required >
+                                    </div>
+                                </div>
+                                <br/><br/>
+                                <img src="" id="photo" width="100" height="100" onerror="this.alt='暂未设置logo'"/>
+                                <div class="control-group">
+                                       <span class="btn btn-success fileinput-button pull-right">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span class="addimg">添加logo</span>
+                                            <input id="fileupload" type="file" name="files[]" multiple>
+                                        </span>
+                                </div>
+                                <br/>
+                                <br/><br/><br/>
+                                <div class="control-group">
+                                       <input type="text" class="gzlink form-control" placeholder="关注链接">
+                                </div>
+
+                            </div><!-- /.box-body -->
+
+                    </div><!-- /.box -->
+                </div><!--/.col (left) -->
+            </div>   <!-- /.row -->
+
+        </form>
+
+    </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
