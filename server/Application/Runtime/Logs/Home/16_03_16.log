@@ -1,0 +1,18 @@
+[ 2016-03-16T16:19:58+08:00 ] ::1 /php/index.php/home/video/test
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ '3' pour la clef 'PRIMARY'
+
+[ 2016-03-16T16:22:12+08:00 ] ::1 /php/index.php/home/video/videolist
+ERR: 参数错误或者未定义:user_id
+
+[ 2016-03-16T16:22:54+08:00 ] ::1 /php/index.php/home/video/videolist/user_id
+ERR: 参数错误或者未定义:user_id
+
+[ 2016-03-16T17:02:11+08:00 ] ::1 /php/index.php/home/video/videolist?user_id=1
+ERR: SQLSTATE[42S22]: Column not found: 1054 Champ 'Array' inconnu dans where clause
+
+[ 2016-03-16T17:05:32+08:00 ] ::1 /php/index.php/home/video/videolist?user_id=1
+ERR: SQLSTATE[42S22]: Column not found: 1054 Champ 'Array' inconnu dans where clause
+
+[ 2016-03-16T17:11:35+08:00 ] ::1 /php/index.php/home/Information/articleView?activity_id=1
+ERR: 参数错误或者未定义:article_id
+

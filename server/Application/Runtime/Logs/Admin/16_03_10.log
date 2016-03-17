@@ -1,0 +1,9 @@
+[ 2016-03-10T15:41:42+08:00 ] ::1 /PHP/index.php/Admin/login/login
+ERR: 模板不存在:./Application/Admin/View/Login/{}.html
+
+[ 2016-03-10T15:43:30+08:00 ] ::1 /PHP/index.php/Admin/login/login
+ERR: 模板不存在:./Application/Admin/View/Login/aa.html
+
+[ 2016-03-10T15:43:33+08:00 ] ::1 /PHP/index.php/Admin/login/login
+ERR: 模板不存在:./Application/Admin/View/Login/aa.html
+
