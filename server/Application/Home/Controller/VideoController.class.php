@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class VideoController extends Controller{
     //视频列表
-    public function videoList($user_id)
+    public function videoList($user_id=null)
     {
         $error = "";
         if(!empty($user_id)){
@@ -46,7 +46,7 @@ class VideoController extends Controller{
         }
     }
     //观看视频
-    public function videoView($video_id){
+    public function videoView($video_id=null){
         $error = "";
         if(!empty($video_id)){
             $video = M('video');
