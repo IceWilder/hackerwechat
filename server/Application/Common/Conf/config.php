@@ -13,6 +13,7 @@ return array(
     //图片上传
     'img_maxSize'          =>'3M',
     'img_exts'             =>array('jpg', 'gif', 'png', 'jpeg'),
-    'img_savePath'        =>'goods/',
-    'img_rootPath'       =>'./Upload/',
+    'img_savePath'        =>'hacker/picture/',
+    'img_rootPath'       =>'./Public/Uploads/picture/',
+
 );

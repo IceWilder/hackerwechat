@@ -13,13 +13,15 @@ class VideoController extends Controller{
                 $group_user= M('group_user');
                 $group_id = $group_user->where("user_id={$user_id} AND del_flag=1")->getField("group_id");
                 if(!empty($group_id)){
+                    $group = M('group');
+                    $group_category = $group->where("group_id={$group_id} AND del_flag=1")->getField("category");
                     $activity_group = M('activity_group');
                     $activity_id = $activity_group->where("group_id={$group_id} AND del_flag=1")->getField("activity_id");
                     if(!empty($activity_id)){
                         $activity_user = M('activity_user');
                         $grade = $activity_user->where("activity_id={$activity_id} AND user_id={$user_id} AND del_flag=1")->getField("grade");
                         $video = M('video');
-                        $videoData = $video->where("del_flag=1 AND activity_id={$activity_id}")->order("create_time desc")->select();
+                        $videoData = $video->where("del_flag=1 AND activity_id={$activity_id} AND category={$group_category}")->order("create_time desc")->select();
                         for ($i = 0; $i < count($videoData); $i++) {
                             $is_look = false;
                             if ($videoData[$i]['video_grade'] > $grade) {

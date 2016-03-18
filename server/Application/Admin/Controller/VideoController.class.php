@@ -1,6 +1,8 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
+use Think\Upload;
+
 class VideoController extends Controller{
     //查找所有的视频
     public function videoList($del_flag=null){
@@ -15,6 +17,7 @@ class VideoController extends Controller{
     public function findVideo($video_id=null){
         if(empty($video_id)){
             returnApiError("视频id不能为空");
+            exit();
         }
         $video = M('video');
         $videoData = $video->where("video_id = {$video_id}")->find();
@@ -40,6 +43,29 @@ class VideoController extends Controller{
         $video = M('video');
         if($video->create()){
             $video->create_time=time();
+            $config=array(
+                'maxSize'   =>  213,
+                'savePath'  =>  './Public/Uploads/video/',
+                'saveName'  =>  array('uniqid',''),
+                'autoSub'   =>    true,
+                'subName'   =>    array('date','Ymd'),
+            );
+            $ftpConfig=array(
+                'host'     => '192.168.1.200', //服务器
+                'port'     => 21, //端口
+                'timeout'  => 90, //超时时间
+                'username' => 'ftp_user', //用户名
+                'password' => 'ftp_pwd', //密码
+            );
+            $upload = new \Think\Upload($config,'Ftp',$ftpConfig);// 实例化上传类
+            $info   =   $upload->upload();
+            if(!$info){
+                returnApiError($upload->getError());
+                exit();
+            }else{
+                $video->pic_url = $info[0]['savepath'].$info[0]['savename'];
+                $video->video_url = $info[1]['savepath'].$info[1]['savename'];
+            }
             $result = $video->add();
             if($result){
                 returnApiSuccess("添加成功","");
@@ -54,6 +80,7 @@ class VideoController extends Controller{
     public function deleteVideo($video_id=null){
         if(empty($video_id)){
             returnApiError("视频id不能为空");
+            exit();
         }
         $video = M('video');
         $video->del_flag = 0;
