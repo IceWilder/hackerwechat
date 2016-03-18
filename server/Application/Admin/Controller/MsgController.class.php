@@ -15,6 +15,7 @@ class MsgController extends Controller{
     public function findMsg($msg_id=null){
         if(empty($msg_id)){
             returnApiError("信息id不能为空");
+            exit();
         }
         $msg = M('msg');
         $msgData = $msg->where("msg_id = {$msg_id}")->find();
@@ -24,19 +25,63 @@ class MsgController extends Controller{
             returnApiSuccess("消息信息",$msgData);
         }
     }
+    //发送消息是获取信息
+    public function sendMsgInfo($msg_id=null){
+        if(empty($msg_id)){
+            returnApiError("信息ID不能为空");
+            exit();
+        }
+        $msg = M('msg');
+        $msgData = $msg->where("msg_id={$msg_id}")->find();
+        $group = M('group');
+        $groupData = $group->where("del_flag=1")->order("create_time desc")->select();
+        $data = array(
+            'msg'=>$msgData,
+            'groups'=>$groupData,
+        );
+        returnApiSuccess($data);
+    }
     //发送消息
-    public function sendMsg(){
-
+    public function sendMsg($msg_id=null,$group_id=null){
+        if(empty($msg_id)||empty($group_id)){
+            returnApiError("信息ID或团队ID或用户ID不能为空");
+            exit();
+        }
+        $group_user = M('group_user');
+        if(is_array($group_id)){
+            foreach($group_id as $id){
+                $user_ids = $group_user->where("group_id={$id} AND del_flag=1")->select();
+                foreach($user_ids as $user_id){
+                    $user_msg = M('user_msg');
+                    $user_msg->msg_id = $msg_id;
+                    $user_msg->user_id = $user_id;
+                    $user_msg->create_time = time();
+                    $user_msg->add();
+                }
+            }
+        }else{
+            $user_ids = $group_user->where("group_id={$group_id} AND del_flag=1")->select();
+            foreach($user_ids as $user_id){
+                $user_msg = M('user_msg');
+                $user_msg->msg_id = $msg_id;
+                $user_msg->user_id = $user_id;
+                $user_msg->create_time = time();
+                $user_msg->add();
+            }
+        }
     }
     //更新消息
     public function saveMsg(){
         $msg = M('msg');
-        $msg->create();
-        $result = $msg->save();
-        if($result === false){
-            returnApiError("更新失败");
+        if($msg->create()){
+            $result = $msg->save();
+            if($result === false){
+                returnApiError("更新失败");
+            }else{
+                returnApiSuccess("更新成功","");
+            }
         }else{
-            returnApiSuccess("更新成功","");
+            returnApiError("更新失败");
         }
     }
     //添加消息
@@ -58,6 +103,7 @@ class MsgController extends Controller{
     public function deleteMsg($msg_id=null){
         if(empty($msg_id)){
             returnApiError("信息id不能为空");
+            exit();
         }
         $msg = M('msg');
         $msg->del_flag = 0;
