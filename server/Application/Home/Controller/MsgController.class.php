@@ -10,13 +10,17 @@ class MsgController extends Controller{
             returnApiError("userid is not null");
             exit();
         }
-        $msgid=M('user_msg')->field('msg_id')->where('user_id ='.$id)->order('create_time desc')->select();
+        $msgid = M('user_msg')->where('user_id =' . $id)->order('create_time desc')->select();
         $i=0;
         if($msgid==null){
-            returnApiError('msg is not exist');
+            returnApiError('该用户没有接受消息');
             exit() ;
         }
         foreach($msgid as $mid) {
+            if ($mid['is_read'] == 0) {
+                $mid['is_read'] = 1;
+                M('user_msg')->save($mid);
+            }
             $whereMsg=array('msg_id'=>$mid['msg_id'],'del_flag'=>1);
             $msg[$i] =M('msg')->where($whereMsg)->find();
             $i++;

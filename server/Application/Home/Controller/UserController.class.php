@@ -4,7 +4,11 @@ use Model\UserModel;
 use Think\Controller;
 class UserController extends Controller{
     //骇客信息
-    public function getUser($user_id){
+    public function getUser($user_id=null){
+        if(empty($user_id)){
+            returnApiError("用户id不能为空");
+            exit();
+        }
         $user = M('user');
         $userData = $user->where("user_id={$user_id}")->find();
         returnApiSuccess("用户信息",$userData);

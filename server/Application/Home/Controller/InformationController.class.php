@@ -15,7 +15,7 @@ class InformationController extends Controller{
         returnApiSuccess("活动咨询信息",$infoData);
     }
     //查看文章
-    public function articleView($article_id){
+    public function articleView($article_id=null){
         $error = "";
         if(!empty($article_id)){
             $article = M('article');
@@ -33,7 +33,7 @@ class InformationController extends Controller{
         }
     }
     //查看活动
-    public function activityView($activity_id){
+    public function activityView($activity_id=null){
         $error = "";
         if(!empty($activity_id)){
             $activity = M('activity');
