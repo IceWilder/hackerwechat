@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4fa9ae5d-35db-4e1f-99f8-d0acc6837584" name="Default" comment="delete local Model">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/Application/Admin/Controller/ReportController.class.php" afterPath="$PROJECT_DIR$/server/Application/Admin/Controller/ReportController.class.php" />
     </list>
     <ignored path="hackerwechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -277,7 +276,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458283167983</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="delete local Model">
+      <created>1458284950215</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1458284950215</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
