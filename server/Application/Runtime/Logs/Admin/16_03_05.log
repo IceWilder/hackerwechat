@@ -1,6 +1,0 @@
-[ 2016-03-05T22:21:25+08:00 ] ::1 /PHP/index.php/admin/login/test1
-ERR: Think\Controller:test2方法不存在！
-
-[ 2016-03-05T22:21:26+08:00 ] ::1 /PHP/index.php/admin/login/test1
-ERR: Think\Controller:test2方法不存在！
-
