@@ -17,4 +17,7 @@ class IndexController extends Controller
     {
         $this->display();
     }
+    public function test(){
+        $this->display();
+    }
 }
