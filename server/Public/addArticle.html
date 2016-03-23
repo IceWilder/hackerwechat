@@ -1,0 +1,59 @@
+<html>
+<head>
+    <link href="__PUBLIC__/css/skin1.css" rel="stylesheet" type="text/css" />
+    <title>添加资讯</title>
+</head>
+<body class="rightBody">
+<form id="form" name="form" action="" method="post" enctype="multipart/form-data">
+    <div class="p_d_1">
+        <div class="p_d_1_1">
+            <div class="content_info">
+                <div class="c_crumbs"><div><b></b><strong>资讯管理</strong>&nbsp;-&nbsp;新增资讯</div></div>
+                <div class="tableH2">新增资讯</div>
+                <table id="baseInfo" width="100%" align="center" class="list" border="0" cellpadding="0" cellspacing="0"  >
+                    <tr>
+                        <td class="tdBg" width="200px">资讯标题：</td>
+                        <td>
+                            <input type="text" name="title">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">资讯图片：</td>
+                        <td >
+                            <input type="file" name="imagePath">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">资讯内容：</td>
+                        <td colspan="3">
+
+                            <textarea name="content" cols="80" rows="10">
+
+                            </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">类别：</td>
+                        <td>
+                            <select name="meta">
+                                <option value="0">技术互联网</option>
+                                <option value="1">生活文艺</option>
+                                <option value="2">健康运动</option>
+                                <option value="3">八卦杂谈</option>
+                                <option value="4">媒体阅读</option>
+                                <option value="5">艺术影画</option>
+                                <option value="6">吃喝生活</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="tc mt20">
+                    <input type="submit" class="btnB2" value="添加" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button"  onclick="javascript:history.go(-1)" class="btnB2" value="返回" />
+                </div>
+            </div></div></div>
+</form>
+</body>
+</html>

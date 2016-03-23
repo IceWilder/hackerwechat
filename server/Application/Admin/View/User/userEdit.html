@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
+    <tr bgcolor="#E7E7E7">
+        <td height="24" colspan="10" background="skin/images/tbg.gif">&nbsp;用户列表&nbsp;</td>
+    </tr>
+    <tr align="center" bgcolor="#FAFAF1" height="22">
+        <td width="10%">真实姓名</td>
+        <td width="8%">手机号</td>
+        <td width="10%">团队</td>
+        <td width="6%">骇客等级</td>
+        <td width="8%">绑定</td>
+    </tr>
+    <form method="post" action="__SELF__">
+        <tr align='center' bgcolor="#FFFFFF" >
+            <input type="hidden" name="user_id" value="{$user.user_id}"/>
+            <input type="hidden" name="wechat" value="{$user.wechatid}"/>
+            <td><input name="read_name" value="{$user.real_name}"/></td>
+            <td><input name="mobile" value="{$user.mobile}"/></td>
+            <td>
+                <select name="wechatID">
+                    <option>{$user.wechatid}</option>
+                    <volist name="groups" id="group" empty="暂无">
+                        <option value="{$group[group_id]}">{$group[wechatid]}</option>
+                    </volist >
+                </select>
+            </td>
+            <td><input name="hacker_grade" value="{$user.hacker_grade}"/></td>
+            <td>
+            <select>
+                <option value="1" <if condition="$user['is_bind'] eq 1">selected="selected"</if> >绑定</option>
+                <option value="0" <if condition="$user['is_bind'] eq 0">selected="selected"</if> >未绑定</option>
+            </select>
+            </td>
+        <td><input type="submit" value="提交"> </td>
+        </tr>
+</form>
+</table>
+
+</body>
+</html>

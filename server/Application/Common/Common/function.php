@@ -5,6 +5,11 @@
  * Date: 12/16/15
  * Time: 1:47 PM
  */
+function returnCurrentActivity(){
+    $activityModel=M('activity');
+    $current=$activityModel->field('activity_id')->order("activity_id desc")->find();
+    return $current['activity_id'];
+}
 function returnApiSuccess($msg = null,$data = array()){
     $result = array(
         'code'=>0,

@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>文档管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/base.css">
+</head>
+<!--<body leftmargin="8" topmargin="8" background='skin/images/allbg.gif'>-->
+
+<!--  内容列表   -->
+<form name="form2">
+
+    <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
+        <tr bgcolor="#E7E7E7">
+            <td height="24" colspan="10" background="skin/images/tbg.gif">&nbsp;用户列表&nbsp;</td>
+        </tr>
+        <tr align="center" bgcolor="#FAFAF1" height="22">
+            <td width="6%">ID</td>
+            <td width="4%">选择</td>
+            <td width="10%">头像</td>
+            <td width="10%">微信名</td>
+            <td width="10%">真实姓名</td>
+            <td width="8%">手机号</td>
+            <td width="10%">团队</td>
+            <td width="6%">骇客等级</td>
+            <td width="8%">绑定</td>
+            <td width="8%">地区</td>
+            <td width="8%">创建时间</td>
+            <td width="10%">操作</td>
+        </tr>
+        <foreach  name="users" item="user">
+
+        <tr align='center' bgcolor="#FFFFFF" >
+            <td>{$user.user_id}</td>
+            <td><input name="id" type="checkbox" id="id" value="101" class="np"></td>
+            <td align="left"><a href=''><u>touxiang</u></a></td>
+            <td>{$user.weixin_name}</td>
+            <td>{$user.real_name}</td>
+            <td>{$user.mobile}</td>
+            <td>{$user.wechatid}</td>
+            <td>{$user.hacker_grade}</td>
+            <td><if condition="$user.is_bind eq 0">未绑定<else/>已绑定</if></td>
+            <td>{$user.address}</td>
+            <td>{$user.create_time}</td>
+            <td><a href="__URL__/userEdit?user_id={$user.user_id}">编辑</a> | <a href="__URL__/delete?user_id={$user.user_id}">删除</a></td>
+        </tr>
+
+        </foreach>
+        <td height="36" colspan="10" align="center"><!--翻页代码 --></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

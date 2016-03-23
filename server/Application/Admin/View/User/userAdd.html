@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link href="__PUBLIC__/css/skin1.css" rel="stylesheet" type="text/css"/>
+    <title>添加资讯</title>
+</head>
+<body class="rightBody">
+<form id="form" name="form" action="__SELF__" method="post" enctype="multipart/form-data">
+    <div class="p_d_1">
+        <div class="p_d_1_1">
+            <div class="content_info">
+                <div class="c_crumbs">
+                    <div><b></b><strong>用户管理</strong>&nbsp;-&nbsp;添加</div>
+                </div>
+                <table id="baseInfo" width="100%" align="center" class="list" border="0" cellpadding="2"
+                       cellspacing="2">
+                    <tr>
+                        <td class="tdBg" width="200px">真名</td>
+                        <td><input  class="tdBg" type="text" name="real_name"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">手机号</td>
+                        <td><input  class="tdBg" type="text" name="mobile"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">邮箱</td>
+                        <td><input  class="tdBg" type="text" name="email"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">团队公众号</td>
+                        <td>
+                            <select name="wechatID">
+                                <option value="">无</option>
+                                <volist name="groups" id="group" empty="暂无">
+                                <option value="{$group[group_id]}">{$group[wechatid]}</option>
+                                </volist >
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="tc mt20">
+                    <input type="submit" class="btnB2" value="添加"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button" onclick="javascript:history.go(-1)" class="btnB2" value="返回"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
