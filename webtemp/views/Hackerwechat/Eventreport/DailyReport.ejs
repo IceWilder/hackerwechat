@@ -18,44 +18,48 @@
         <span class="text">数据分析</span>
     </div>
     <div class="article_title">
-        <input class="article_titleIn" placeholder="  文章标题" type="text">
+        <input class="article_titleIn" placeholder="  文章标题" type="text"><span class="warn">不能为空！</span>
     </div>
     <div class="send_time">
-        <input class="send_timeIn" placeholder="  发送时间" type="text">
+        <input class="send_timeIn" placeholder="  发送时间" type="text"><span class="warn">不能为空！</span>
     </div>
     <div class="service_num">
-        <input class="service_numIn" placeholder="  送达人数" type="text">
+        <input class="service_numIn" placeholder="  送达人数" type="text"><span class="warn">不能为空！</span>
     </div>
     <div class="read_num">
-        <input class="read_numIn" placeholder="  阅读人数" type="text">
+        <input class="read_numIn" placeholder="  阅读人数" type="text"><span class="warn">不能为空！</span>
     </div>
     <div class="share_num">
-        <input class="share_numIn" placeholder="  分享转发次数" type="text">
+        <input class="share_numIn" placeholder="  分享转发次数" type="text"><span class="warn">不能为空！</span>
     </div>
     <div class="like_num">
-        <input class="like_numIn" placeholder="  点赞人数" type="text">
+        <input class="like_numIn" placeholder="  点赞人数" type="text"><span class="warn">不能为空！</span>
     </div>
     <div class="submitBtn" >
         <input type="submit" class="submit_btn" value="提交" >
     </div>
-    <div class="weui_dialog_confirm" id="divalt6">
-        <div class="weui_mask"></div>
-        <div class="weui_dialog" id="divalt1">
-            <!--<div class="weui_dialog_bd" id="divalt1">确认提交?</div>-->
-            <div class="weui_icon_area1"><i class="weui_icon_success weui_icon_msg"></i></div>
-            <p class="tishi1">提交成功 </p>
-            <div class="a21">
-                <!--<button class="btn"><a href="#" class="weui_btn_dialog primary" id="abhc">确定</a></button>-->
-                <input type="button" class="btn1" value="确定">
-            </div>
-        </div>
 
+</div>
+<div class="weui_dialog_confirm" id="divalt6">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog" id="divalt">
+
+        <img src="/images/hackerwechati/cancel.jpg" id="cancelbtn">
+        <p class="tishi">确认提交?<br>一旦提交将不可修改!</p>
+        <div class="a2">
+
+            <input type="button" class="btn" value="确定" id="surebtn">
+        </div>
     </div>
 
 </div>
 <script>
-        document.getElementById('divalt6').style.display = "none";//隐藏
-
+    var jscript = "<%=jscript%>";
+</script>
+<!-- RequireJs -->
+<script src="/js/require.js" defer async="true" data-main="/js/main.js"></script>
+<script>
+//        document.getElementById('divalt6').style.display = "none";//隐藏
 </script>
 </body>
 </html>

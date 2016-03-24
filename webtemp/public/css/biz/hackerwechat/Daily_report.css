@@ -32,11 +32,20 @@ body{
     margin-left: 5%;
     line-height: 38px;
 }
+.warn{
+    position: absolute;
+    right: 3%;
+    margin-top: 22px;
+    color: red;
+    transform:scale(0.64);
+    /*display: none;*/
+    background-color: #fff;
+}
 .article_title {
 
-     width: 100%;
+    width: 100%;
 
- }
+}
 .article_title .article_titleIn{
     border-radius: 3px;
     border-style: none;
@@ -123,32 +132,31 @@ body{
     color: #fff;
     font-size: 18px;
 }
-#divalt1{
-    width: 65%;
-    height: 195px;
+
+#divalt{
+    width: 60%;
+    height: 180px;
     margin-top: -130px;
     border-radius: 8px;
 }
-
-#divalt1  .weui_icon_msg:before{
-    font-size: 90px;
-
+#divalt img{
+    float: right;
+    padding-top: 11px;
+    padding-right: 10px;
 }
-#divalt1  .weui_icon_success:before{
-    color: rgb(132,208,228);
-}
-#divalt1 .tishi1{
-    margin-top: 10px;
-    font-size: 15px;
+
+#divalt .tishi{
+    margin-top: 45px;
+    font-size: 20px;
     color: rgb(136,137,138);
 }
-.a21 .btn1 {
-    width: 130px;
-    height: 30px;
+.a2 .btn {
+    width: 80%;
+    height: 40px;
     border-radius: 5px;
     border-style: none;
     background-color: rgb(132, 208, 228);
     color: #fff;
-    font-size: 5px;
-    margin-top: 15px;
+    font-size: 20px;
+    margin-top: 13px;
 }

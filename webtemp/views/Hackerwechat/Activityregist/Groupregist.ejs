@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <title>EventRegist</title>
+    <link href="/css/biz/hackerwechat/Groupregist.css" type="text/css" rel="stylesheet">
+    <link href="/css/biz/hackerwechat/weui.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="content">
+    <div class="registInfo">
+        <img src="/images/hackerwechati/resume_title.png">
+        <h4 class="title-text">请填报报名信息</h4>
+    </div>
+    <div class="gzhName">
+        <input type="text" placeholder=" 请输入您所创建的公众号名称">
+
+    </div>
+    <div class="zghClass">
+        <div class="zghclass">
+            <img src="/images/hackerwechati/read.png" style="position: relative;top: 5px;left: 3%;">
+            <span>选择微信公众号类别</span>
+            <div class="choiceBtn">
+                <input type="button" value="技术互联网" class="internet" id="btn_1" onclick="changeColor('1')">
+                <input type="button" value="生活文艺" class="lifeArt" id="btn_2" onclick="changeColor('2')">
+                <input type="button" value="健康运动" class="sport" id="btn_3" onclick="changeColor('3')">
+                <input type="button" value="八卦杂谈" class="Gossip" id="btn_4" onclick="changeColor('4')">
+                <input type="button" value="媒体阅读" class="mediaread" id="btn_5" onclick="changeColor('5')">
+                <input type="button" value="艺术影画" class="artPicture" id="btn_6" onclick="changeColor('6')">
+                <input type="button" value="吃喝生活" class="eatLife" id="btn_7" onclick="changeColor('7')">
+            </div>
+        </div>
+    </div>
+    <div class="teamInfo">
+        <img src="/images/hackerwechati/resume_title.png">
+        <span class="info-text">请填写团队成员信息</span>
+
+    </div>
+    <div class="Number1">
+        <div class="number1" id="number1">
+            <span class="number1-text">成员1</span>
+            <span class="rightImg"><img src="/images/hackerwechati/sanjiao01.jpg" id="myimage1"></span>
+        </div>
+    </div>
+    <div class="number1-info" id="number1-info">
+        <input class="relName" type="text" placeholder=" 请输入您的真实姓名" > <span class="warn" >姓名不能为空!</span>
+        <input class="telephone" type="text" placeholder=" 请输入您的联系电话"><span class="warn">电话不能为空!</span>
+        <input class="Email" type="email" placeholder=" 请输入您的电子邮箱地址"><span class="warn">邮箱输入不正确!</span>
+    </div>
+    <div class="Number2" id="n2">
+        <div class="number2" id="number2">
+            <span class="number2-text">成员2</span>
+            <span class="rightImg"><img src="/images/hackerwechati/sanjiao01.jpg" id="myimage2"></span>
+        </div>
+    </div>
+    <div class="number2-info" id="number2-info">
+        <input class="relName" type="text" placeholder=" 请输入您的真实姓名"><span class="warn">姓名不能为空!</span>
+        <input class="telephone" type="text" placeholder=" 请输入您的联系电话"><span class="warn">电话不能为空!</span>
+        <input class="Email" type="email" placeholder=" 请输入您的电子邮箱地址"><span class="warn">邮箱输入不正确!</span>
+    </div>
+    <div class="Number3" id="n3">
+        <div class="number3" id="number3">
+            <span class="number3-text">成员3</span>
+            <span class="rightImg"><img src="/images/hackerwechati/sanjiao01.jpg" id="myimage3"></span>
+        </div>
+    </div>
+    <div class="number3-info" id="number3-info">
+        <input class="relName" type="text" placeholder=" 请输入您的真实姓名"><span class="warn">电话不能为空</span>
+        <input class="telephone" type="text" placeholder=" 请输入您的联系电话"><span class="warn">电话不能为空!</span>
+        <input class="Email" type="email" placeholder=" 请输入您的电子邮箱地址"><span class="warn">邮箱输入不正确!</span>
+    </div>
+    <div class="addNum">
+        <div class="addnum" id="addnum">
+            <span class="addnum-text">添加成员</span>
+            <span class="rightImg"><img src="/images/hackerwechati/sanjiao02.jpg"></span>
+        </div>
+    </div>
+
+</div>
+<div class="apply">
+    <input type="button" class="applyBtn" value="立即报名">
+</div>
+<div class="weui_dialog_confirm" id="divalt5">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog" id="divalt">
+        <img src="/images/hackerwechati/cancel.jpg" id="cancelbtn">
+        <p class="tishi1">确定提交?</p>
+        <p class="tishi">一旦提交不可修改成员信息 </p>
+        <div class="a2">
+            <!--<button class="btn"><a href="#" class="weui_btn_dialog primary" id="abhc">确定</a></button>-->
+            <input type="button" class="btn" value="确定" id="surebtn">
+        </div>
+    </div>
+</div>
+<!--<div class="weui_dialog_confirm" id="divalt6">-->
+<!--<div class="weui_mask"></div>-->
+<!--<div class="weui_dialog" id="divalt1">-->
+
+<!--<img src="/images/hacker/cancel.jpg" id="cancelbtn">-->
+<!--<p class="tishi1">您的报名以提交</br>是否需要绑定手机号码? </p>-->
+<!--<div class="a21">-->
+<!--&lt;!&ndash;<button class="btn"><a href="#" class="weui_btn_dialog primary" id="abhc">确定</a></button>&ndash;&gt;-->
+<!--<input type="button" class="btn1" value="去绑定手机号码" id="surebtn">-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+
+</body>
+<script>
+    var jscript = "<%=jscript%>";
+</script>
+<!-- RequireJs -->
+<script src="/js/require.js" defer async="true" data-main="/js/main.js"></script>
+</html>

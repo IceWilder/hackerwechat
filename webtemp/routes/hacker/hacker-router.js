@@ -5,52 +5,45 @@ var Action = require("../apiaction");
 var DataProxy = require("data-proxy");
 
 exports.hackerRouter = function(router){
-    router.get('/hackerwechat/Userbdfaild',function(req,res){
-        res.render ('Hackerwechat/Userbinding/Userbdfaild',{
-            layout:'keb/layout-keb',
-            active:'videolist',
-            //page:1,
-            jscript:'hewuqi/video/video'
-        });
-    });
-    router.get('/hackerwechat/Userbdsuccess',function(req,res){
-        res.render ('Hackerwechat/Userbinding/Userbdsuccess',{
-            layout:'keb/layout-keb',
-            active:'videolist',
-            //page:1,
-            jscript:'hewuqi/video/video'
-        });
-    });
+
     router.get('/hackerwechat/UserBinding',function(req,res){
         res.render ('Hackerwechat/Userbinding/UserBinding',{
-            layout:'keb/layout-keb',
-            active:'videolist',
+            //layout:'keb/layout-keb',
+            //active:'videolist',
             //page:1,
-            jscript:'hewuqi/video/video'
+            jscript:'hackerwechat/userbinding'
         });
     });
     router.get('/hackerwechat/activitiesdetails',function(req,res){
         res.render ('Hackerwechat/Activityregist/ActivitiesDetails',{
             //layout:'keb/layout-keb',
-            active:'videolist',
+            //active:'videolist',
             //page:1,
             //jscript:'hewuqi/video/video'
         });
     });
-    router.get('/hackerwechat/EventRegist',function(req,res){
-        res.render ('Hackerwechat/Activityregist/EventRegist',{
+    router.get('/hackerwechat/Hackerinformation',function(req,res){
+        res.render ('Hackerwechat/Actcoursemanage/Hackerinformation',{
             //layout:'keb/layout-keb',
-            active:'videolist',
+            //active:'videolist',
+            //page:1,
+            //jscript:'hewuqi/video/video'
+        });
+    });
+    router.get('/hackerwechat/GroupRegist',function(req,res){
+        res.render ('Hackerwechat/Activityregist/GroupRegist',{
+            //layout:'keb/layout-keb',
+            //active:'videolist',
             //page:1,
             jscript:'hackerwechat/groupregist'
         });
     });
     router.get('/hackerwechat/HackerInfo',function(req,res){
         res.render ('Hackerwechat/Activityregist/HackerInfo',{
-            layout:'keb/layout-keb',
-            active:'videolist',
+            //layout:'keb/layout-keb',
+            //active:'videolist',
             //page:1,
-            jscript:'hewuqi/video/video'
+            jscript:'hackerwechat/activity'
         });
     });
 
@@ -63,12 +56,12 @@ exports.hackerRouter = function(router){
     //    });
     //});
     router.all('/hackerwechat/DailyReport',function(req,res){
-        var report_id=req.param("report_id");
-        var params={report_id:report_id};
+        //var report_id=req.param("report_id");
+        //var params={report_id:report_id};
             res.render ('Hackerwechat/Eventreport/DailyReport',{
                 //layout:'keb/layout-keb',
                 //active:'videolist',
-                jscript:'Hackerwechat/Eventreport/DailyReport',
+                jscript:'hackerwechat/dailyReport',
               //  data:data
             });
 

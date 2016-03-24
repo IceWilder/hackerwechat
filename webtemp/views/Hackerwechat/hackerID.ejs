@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .content{
+            width: 96%;
+
+
+            margin-left: 2%;
+            margin-right: 2%;
+            margin-top: 2%;
+            background-color: rgba(240,239,245,1);
+
+        }
+        .content .header .backImg{
+            width: 100%;
+            height: 600px;
+            /*-webkit-filter:blur(10px);*/
+            background-size: cover;
+        }
+        .header .des{
+            width: 240px;
+            height: 240px;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+
+        }
+
+        .header .noID{
+            font-size: 65px;
+            color: #fff;
+            position: absolute;
+            top: 240px;
+            left: 30%;
+        }
+        .header .name{
+            font-size: 70px;
+            color: #fff;
+            position: absolute;
+            top: 240px;
+            left: 30%;
+
+        }
+        .header .rank{
+            font-size: 40px;
+            color: #fff;
+            position: absolute;
+            top: 267px;
+            left: 55%;
+
+        }
+
+        /*.header .id{*/
+        /*font-size: 50px;*/
+        /*color: #fff;*/
+        /*position: absolute;*/
+        /*top: 310px;*/
+        /*left: 30%;*/
+
+        /*}*/
+        /*.header .id-name{*/
+        /*font-size: 40px;*/
+        /*color: #fff;*/
+        /*position: absolute;*/
+        /*top: 310px;*/
+        /*left: 62%;*/
+
+        /*}*/
+
+        .header .hacker-right{
+            position: absolute;
+            top: 550px;
+            right: 45px;
+            color: rgba(170,173,174,1);
+            font-size: 35px;
+        }
+        .content-text {
+            padding-left: 40px;
+
+        }
+        .content-text .title1{
+            font-size: 30px;
+            margin-top: 30px;
+        }
+        .content-text .text1{
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        .content-text .title2{
+            margin-top: 20px;
+            font-size: 30px;
+        }
+        .content-text .text2{
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        .content-text .title3{
+            margin-top: 20px;
+            font-size: 30px;
+        }
+        .content-text .telephone{
+            margin-top: 8px;
+            font-size: 13px;
+        }
+        .content-text .address{
+            margin-top: 8px;
+            font-size: 13px;
+            padding-bottom: 600px;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div  class="header">
+        <img src="/images/hacker/banggong.jpg" class="backImg">
+        <img src="/images/hacker/hacker1.png" class="des">
+        <p class="name">李寻欢</p>
+        <span class="rank">一级骇客</span>
+        <!--<p class="noID">暂无骇客身份 </p>-->
+        <!--<p class="id">NO.2016578</p>-->
+        <!--<span class="id-name">(骇客ID)</span>-->
+        <hr style=" width: 60%;color:#ffffff;position: relative;top: -296px;left: 24%;height: 2px;background-color: #fff;" />
+        <span class="hacker-right">骇客学院线下授予</span>
+
+    </div>
+    <div class="content-text">
+        <h4 class="title1" id="power">骇客特权</h4>
+        <p class="text1">
+            可享受xxx，参加免费讲座 可享受xxx，参加免费讲座
+            可享受xxx，参加免费讲座 可享受xxx，参加免费讲座
+            可享受xxx，参加免费讲座 可享受xxx，参加免费讲座
+            可享受xxx，参加免费讲座 可享受xxx，参加免费讲座
+        </p>
+        <h4 class="title2">如何升级?</h4>
+        <p class="text2">
+            骇客学院，免费教程,骇客学院，免费教程,骇客学院，免费教程,
+            骇客学院，免费教程,骇客学院，免费教程,骇客学院，免费教程,
+            骇客学院，免费教程,骇客学院，免费教程,骇客学院，免费教程,
+        </p>
+        <h4 class="title3">联系我们</h4>
+        <p class="telephone">电话:0571-9687126</p>
+        <p class="address">地址:杭州市西湖区紫荆花路2号联合大厦</p>
+    </div>
+
+</div>
+
+</body>
+<script>
+    var jscript = "<%=jscript%>";
+</script>
+<script src="/js/require.js" defer async="true" data-main="/js/main.js"></script>
+
+</html>

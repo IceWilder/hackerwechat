@@ -6,13 +6,26 @@ exports.hwqAPI = function(router){
 
     /*核舞器*/
     router.all('/hewuqi/api/videos',function(req,res){
-        var page=req.param("page");
-        var size=req.param("rows");
-        var content=req.param("content");
-        var ordertype=req.param("ordertype");
-        var category=req.param("category");
-        var params={page:page,size:size,content:content,ordertype:ordertype,category:category};
-        Action.send(req,res,'/admin/getVideoList',params,"GET",function(res,data){
+        var user_id=req.param("user_id");
+        var hacker_grade=req.param("hacker_grade");
+        var email=req.param("email");
+        var weixin_name=req.param("weixin_name");
+        var real_name=req.param("real_name");
+        var mobile=req.param("mobile");
+        var user_head=req.param("user_head");
+        var address=req.param("address");
+        var is_bind=req.param("is_bind");
+        var params={user_id:user_id,
+            hacker_grade:hacker_grade,
+            email:email,
+            weixin_name:weixin_name,
+            real_name:real_name,
+            mobile:mobile,
+            user_head:user_head,
+            address:address,
+            is_bind:is_bind
+        };
+        Action.send(req,res,'/admin/getVideoList',params,"POST",function(res,data){
             var json = JSON.parse(data);
             //console.log("[[[json]]]",json.data);
             if(json.data === "" || json.data===null) {
@@ -25,13 +38,22 @@ exports.hwqAPI = function(router){
         })
     });
     router.all('/hewuqi/api/courses',function(req,res){
-        var page=req.param("page");
-        var size=req.param("rows");
-        var content=req.param("content");
-        var ordertype=req.param("ordertype");
-        var course_type=req.param("course_type");
-        var params={page:page,size:size,content:content,ordertype:ordertype,course_type:course_type};
-        Action.send(req,res,'/admin/courseList',params,"GET",function(res,data){
+        var report_id=req.param("report_id");
+        var wechatID=req.param("wechatID");
+        var article_title=req.param("article_title");
+        var send_time=req.param("send_time");
+        var read_number=req.param("read_number");
+        var share_num=req.param("share_num");
+        var like_num=req.param("like_num");
+        var params={report_id:report_id,
+            wechatID:wechatID,
+            article_title:article_title,
+            send_time:send_time,
+            read_number:read_number,
+            share_num:share_num,
+            like_num:like_num
+        };
+        Action.send(req,res,'/admin/courseList',params,"POST",function(res,data){
             var json = JSON.parse(data);
             //console.log("[[[json]]]",json.data);
             if(json.data === "" || json.data===null) {
