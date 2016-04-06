@@ -1,25 +1,31 @@
 <?php
 namespace Model;
 use Think\Model;
+use Admin\Common\Common\myupyun;
+
 class ActivityModel extends Model{
     public function _before_insert(&$data, $options)
     {
-        //图片上传
-        if ($_FILES['pic']['error'] == 0) {
-            $rootPath = C('img_rootPath');
+//        //图片上传
+        $this->upload1($data,$options);
+        $data['create_time']=date("Y-m-d H:i:s");
+    }
+    public function _before_update(&$data, $options)
+    {
+        $this->upload1($data,$options);
+    }
+    public function upload1(&$data, $options){
 
-            $upload = new Upload(array('rootPath' => $rootPath));// 实例化上传类
-            $upload->maxSize = (int)C('img_maxSize') * 1024 * 1024;// 设置附件上传大小
-            $upload->exts = C('img_exts');// 设置附件上传类型
-            $upload->savePath = C('img_savePath'); // 设置附件上传目录// 上传文件
-            $info = $upload->upload();
-            if (!$info) {// 上传错误提示错误信
-                $this->error = $upload->getError();
-                dump($upload->getError());
-            } else {
-                $name = $info['pic']['savepath'] . $info['pic']['savename'];
-                $data['pic_url'] = $name;
+            if($_FILES['pic']['size']>0) {
+                $upyun = new myupyun(YNAME, YUSER, YPASS);
+                $dl = "http://".YNAME.".b0.upaiyun.com/";
+                $upyun->setApiDomain('v0.api.upyun.com');
+                // 获得文件
+                $file_name = md5(time());
+                $file_tmp_name = $_FILES["pic"]["tmp_name"];
+                $fh = fopen($file_tmp_name,'r');
+                $upyun->writeFile("/".$file_name, $fh);
+                $data['pic_url'] = $dl.$file_name;
             }
-        }
     }
 }

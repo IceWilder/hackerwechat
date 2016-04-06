@@ -1,77 +1,100 @@
 <?php
 namespace Admin\Controller;
+use Admin\Common\Common\myupyun;
 use Think\Controller;
-use Think\Upload;
-
-class VideoController extends Controller{
+use Think\Page;
+class VideoController extends FilterController{
     //查找所有的视频
-    public function videoList($del_flag=null){
-        if(empty($del_flag)){
-            $del_flag = 1;
-        }
+    public function videoList($del_flag=1){
         $video = M('video');
-        $videoData = $video->where("del_flag = {$del_flag}")->order("create_time desc")->select();
-        returnApiSuccess("所有的视频",$videoData);
+
+        $recordcount = $video->where("del_flag = {$del_flag}")->order("create_time desc")->count();//总记录数
+        $page=new Page($recordcount,10);
+        $page->lastSuffix=false;    //最后一页是否显示总页数
+        $page->rollPage=4;          //分页栏每页显示的页数
+        $page->setConfig('prev', '【上一页】');
+        $page->setConfig('next', '【下一页】');
+        $page->setConfig('first', '【首页】');
+        $page->setConfig('last', '【末页】');
+
+        $page->setConfig('theme', '共 %TOTAL_ROW% 条记录,当前是 %NOW_PAGE%/%TOTAL_PAGE% %FIRST% %UP_PAGE%  %DOWN_PAGE% %END%');
+
+        $startno=$page->firstRow;   //起始行数
+        $pagesize=$page->listRows;  //页面大小
+        $videoList=$video->where("del_flag = {$del_flag}")->order("create_time desc")->limit("$startno,$pagesize")->select();
+
+        $pagestr=$page->show(); //组装分页字符串
+        $category = array(
+            '0'=>'技术互联网',
+            '1'=>'生活文艺',
+            '2'=>'健康运动',
+            '3'=>'八卦杂谈',
+            '4'=>'媒体阅读',
+            '5'=>'艺术影画',
+            '6'=>'吃喝生活',
+        );
+        for($i=0;$i<count($videoList);$i++){
+            $videoList[$i]['category'] = $category[$videoList[$i]['category']];
+        }
+        $this->assign('videoList',$videoList);
+        $this->assign('pagestr',$pagestr);
+        $this->display();
     }
     //根据ID查找视频
-    public function findVideo($video_id=null){
+    public function editVideo($video_id=null){
         if(empty($video_id)){
             returnApiError("视频id不能为空");
             exit();
         }
         $video = M('video');
         $videoData = $video->where("video_id = {$video_id}")->find();
-        if(empty($videoData)){
-            returnApiError("视频不存在");
-        }else{
-            returnApiSuccess("视频信息",$videoData);
-        }
+        $activity = M('activity')->where("del_flag=1")->order("start_time desc")->select();
+        $this->assign("activity",$activity);
+        $this->assign('video',$videoData);
+        $this->display();
     }
     //更新视频
-    public function saveVideo(){
+    public function doSaveVideo(){
         $video = M('video');
         $video->create();
-        $result = $video->save();
-        if($result === false){
-            returnApiError("更新失败");
-        }else{
-            returnApiSuccess("更新成功","");
+        if($_FILES['imagePath']['size']>0){
+            $upyun = new myupyun(YNAME, YUSER, YPASS);
+            $dl = "http://".YNAME.".b0.upaiyun.com/";
+            $upyun->setApiDomain('v0.api.upyun.com');
+            // 获得文件
+            $file_name = md5(time());
+            $file_tmp_name = $_FILES["imagePath"]["tmp_name"];
+            $fh = fopen($file_tmp_name,'r');
+            $upyun->writeFile("/".$file_name, $fh);
+            $video->pic_url = $dl.$file_name;
         }
+        $result = $video->save();
+        $this->redirect('videoList',null);
+    }
+    public function addVideo(){
+        $activity = M('activity')->where("del_flag=1")->order("start_time desc")->select();
+        $this->assign("activity",$activity);
+        $this->display();
     }
     //添加视频
-    public function addVideo(){
+    public function doAddVideo(){
         $video = M('video');
         if($video->create()){
-            $video->create_time=time();
-            $config=array(
-                'maxSize'   =>  213,
-                'savePath'  =>  './Public/Uploads/video/',
-                'saveName'  =>  array('uniqid',''),
-                'autoSub'   =>    true,
-                'subName'   =>    array('date','Ymd'),
-            );
-            $ftpConfig=array(
-                'host'     => '192.168.1.200', //服务器
-                'port'     => 21, //端口
-                'timeout'  => 90, //超时时间
-                'username' => 'ftp_user', //用户名
-                'password' => 'ftp_pwd', //密码
-            );
-            $upload = new \Think\Upload($config,'Ftp',$ftpConfig);// 实例化上传类
-            $info   =   $upload->upload();
-            if(!$info){
-                returnApiError($upload->getError());
-                exit();
-            }else{
-                $video->pic_url = $info[0]['savepath'].$info[0]['savename'];
-                $video->video_url = $info[1]['savepath'].$info[1]['savename'];
+            $video->create_time=date("Y-m-d H:i:s",time());
+            if($_FILES['imagePath']['size']>0){
+                $upyun = new myupyun(YNAME, YUSER, YPASS);
+                $dl = "http://".YNAME.".b0.upaiyun.com/";
+                $upyun->setApiDomain('v0.api.upyun.com');
+                // 获得文件
+                $file_name = md5(time());
+                $file_tmp_name = $_FILES["imagePath"]["tmp_name"];
+                $fh = fopen($file_tmp_name,'r');
+                $upyun->writeFile("/".$file_name, $fh);
+                $video->pic_url = $dl.$file_name;
             }
+
             $result = $video->add();
-            if($result){
-                returnApiSuccess("添加成功","");
-            }else{
-                returnApiError("添加失败");
-            }
+            $this->redirect('videoList',null);
         }else{
             returnApiError("添加失败");
         }
@@ -85,10 +108,6 @@ class VideoController extends Controller{
         $video = M('video');
         $video->del_flag = 0;
         $result = $video->where("video_id={$video_id}")->save();
-        if($result === false){
-            returnApiError("删除失败");
-        }else{
-            returnApiSuccess("删除成功","");
-        }
+        $this->redirect('videoList',null);
     }
 }

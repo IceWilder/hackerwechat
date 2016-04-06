@@ -1,0 +1,133 @@
+<html>
+<head>
+    <link href="__PUBLIC__/css/skin1.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="__PUBLIC__/umeditor/third-party/jquery.min.js"></script>
+    <script type="text/javascript" charset="gbk" src="__PUBLIC__/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="gbk" src="__PUBLIC__/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <title>添加视频</title>
+</head>
+<body class="rightBody">
+<form action="__URL__/doSaveVideo" method="post" enctype="multipart/form-data">
+    <div class="p_d_1">
+        <div class="p_d_1_1">
+            <div class="content_info">
+                <div class="c_crumbs"><div><b></b><strong>视频管理</strong>&nbsp;-&nbsp;编辑视频</div></div>
+                <div class="tableH2">编辑视频</div>
+                <table id="baseInfo" width="100%" align="center" class="list" border="0" cellpadding="0" cellspacing="0"  >
+                    <input type="hidden" name="video_id" value="{$video.video_id}">
+                    <tr>
+                        <td class="tdBg" width="200px">视频标题：</td>
+                        <td>
+                            <input type="text" name="title" value="{$video.title}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">视频图片：</td>
+                        <td >
+                            <img width="100px" height="100px" src="{$video.pic_url}">
+                            <input type="file" name="imagePath">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">视频链接：</td>
+                        <td >
+                            <input type="text" name="video_url" value="{$video.video_url}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">视频信息：</td>
+                        <td colspan="3">
+                            <script id="container" name="video_intro" type="text/plain" style="width:600px;height:200px;">{$video.video_intro}</script>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tdBg" width="200px">视频类别：</td>
+                        <td>
+                            <select name="category">
+                                <if condition="$video.category eq 0">
+                                    <option value="0" selected>技术互联网</option>
+                                    <else /><option value="0">技术互联网</option>
+                                </if>
+                                <if condition="$video.category eq 1">
+                                    <option value="1" selected>生活文艺</option>
+                                    <else /><option value="1">生活文艺</option>
+                                </if>
+                                <if condition="$video.category eq 2">
+                                    <option value="2" selected>健康运动</option>
+                                    <else /><option value="2">健康运动</option>
+                                </if>
+                                <if condition="$video.category eq 3">
+                                    <option value="3" selected>八卦杂谈</option>
+                                    <else /><option value="3">八卦杂谈</option>
+                                </if>
+                                <if condition="$video.category eq 4">
+                                    <option value="4" selected>媒体阅读</option>
+                                    <else /><option value="4">媒体阅读</option>
+                                </if>
+                                <if condition="$video.category eq 5">
+                                    <option value="5" selected>艺术影画</option>
+                                    <else /><option value="5">艺术影画</option>
+                                </if>
+                                <if condition="$video.category eq 6">
+                                    <option value="6" selected>吃喝生活</option>
+                                    <else /><option value="6">吃喝生活</option>
+                                </if>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">视频等级：</td>
+                        <td>
+                            <select name="video_grade">
+                                <if condition="$video.video_grade eq 1">
+                                    <option value="1" selected>1</option>
+                                    <else /><option value="1">1</option>
+                                </if>
+                                <if condition="$video.video_grade eq 2">
+                                    <option value="2" selected>2</option>
+                                    <else /><option value="2">2</option>
+                                </if>
+                                <if condition="$video.video_grade eq 3">
+                                    <option value="3" selected>3</option>
+                                    <else /><option value="3">3</option>
+                                </if>
+                                <if condition="$video.video_grade eq 4">
+                                    <option value="4" selected>4</option>
+                                    <else /><option value="4">4</option>
+                                </if>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">视频所属活动：</td>
+                        <td>
+                            <select name="activity_id">
+                                <foreach name="activity" item="ac">
+                                    <if condition="($video.activity_id) eq ($ac.activity_id)">
+                                        <option value="{$ac.activity_id}" selected>{$ac.title}</option>
+                                        <else/><option value="{$ac.activity_id}">{$ac.title}</option>
+                                    </if>
+                                </foreach>
+
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="tc mt20">
+                    <input type="submit" class="btnB2" value="保存" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button"  onclick="javascript:history.go(-1)" class="btnB2" value="返回" />
+                </div>
+            </div></div></div>
+</form>
+<script type="text/javascript">
+    var um = UM.getEditor('container');
+//    var value = '{$video.video_intro}';
+//    um.execCommand('insertHtml',value);
+</script>
+</body>
+</html>

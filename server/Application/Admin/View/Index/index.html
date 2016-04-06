@@ -17,7 +17,7 @@
                     <div class="li-item"><em class="scm li-ico ic6"></em>每日汇报<span class="scm arrow"></span></div>
                     <dl>
                         <dd>
-                            <a href="__URL__/test" target="iframe0" class="dd-item">第三天<span class="scm dd-ar"></span></a>
+                            <a href="__MODULE__/report/reportList" target="right" class="dd-item">汇报列表<span class="scm dd-ar"></span></a>
                         </dd>
                     </dl>
                 </li>
@@ -40,7 +40,10 @@
                     <div class="li-item"><em class="scm li-ico ic2"></em>活动管理<span class="scm arrow"></span></div>
                     <dl>
                         <dd>
-                            <a href="#" class="dd-item">活动列表<span class="scm dd-ar"></span></a>
+                            <a href="__MODULE__/activity/getActivity/del_flag/1"  target="right" class="dd-item">活动列表<span class="scm dd-ar"></span></a>
+                        </dd>
+                        <dd>
+                            <a href="__MODULE__/activity/addActivity"  target="right" class="dd-item">添加活动<span class="scm dd-ar"></span></a>
                         </dd>
                     </dl>
                 </li>
@@ -49,8 +52,11 @@
                     <div class="li-item"><em class="scm li-ico ic3"></em>资讯管理<span class="scm arrow"></span></div>
                     <dl>
                         <dd>
-                            <a href="#" class="dd-item">资讯列表<span class="scm dd-ar"></span></a>
-            </dd>
+                            <a href="__MODULE__/article/articleList" target="right" class="dd-item">资讯列表<span class="scm dd-ar"></span></a>
+                        </dd>
+                        <dd>
+                            <a href="__MODULE__/article/addArticle" target="right" class="dd-item">添加资讯<span class="scm dd-ar"></span></a>
+                        </dd>
             </dl>
             </li>
 
@@ -59,7 +65,10 @@
                 <div class="li-item"><em class="scm li-ico ic4"></em>消息管理<span class="scm arrow"></span></div>
                 <dl>
                     <dd>
-                        <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
+                        <a href="__MODULE__/msg/msglist" target="right" class="dd-item">查看信息<span class="scm dd-ar"></span></a>
+                    </dd>
+                    <dd>
+                        <a href="__MODULE__/msg/addMsg" target="right" class="dd-item">添加信息<span class="scm dd-ar"></span></a>
                     </dd>
                 </dl>
             </li>
@@ -68,19 +77,14 @@
                 <div class="li-item"><em class="scm li-ico ic5"></em>课程管理<span class="scm arrow"></span></div>
                 <dl>
                     <dd>
-                        <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
+                        <a href="__MODULE__/video/videolist" target="right" class="dd-item">视频列表<span class="scm dd-ar"></span></a>
                     </dd>
-                </dl>
-            </li>
-            <!--活动进度-->
-            <li>
-                <div class="li-item"><em class="scm li-ico ic7"></em>活动进度<span class="scm arrow"></span></div>
-                <dl>
                     <dd>
-                        <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
+                        <a href="__MODULE__/video/addVideo" target="right" class="dd-item">添加视频<span class="scm dd-ar"></span></a>
                     </dd>
                 </dl>
             </li>
+
             </ul>
         </div>
     </div>
@@ -92,15 +96,10 @@
                     <div class="ad-change-btn"><a id="ad-list" href="javascript:;" class="scm ad-list-btn"></a></div>
                     <div class="ad-search-box clear">
                         <div class="ad-search-sel">
-                            <select>
-                                <option>当前活动</option>
-                                <option>上一次</option>
-                                <option>上上次</option>
-                            </select>
+
                         </div>
                         <div class="ad-search-cha">
-                            <input type="text" class="ad-search-input" placeholder="请输入你要查找的内容">
-                            <input type="submit" class="scm ad-search-btn" value="">
+
                         </div>
                     </div>
                 </div>
@@ -113,17 +112,17 @@
                         </ul>
                     </div>
                     <div class="ad-welcom">
-                        <div class="ad-wel-img"><img src="image/picture1.png" height="36" width="36"></div>
+                        <div class="ad-wel-img"></div>
                         <div class="ad-wel-text">
-                            <div class="font-wel">欢迎您！<strong>李自明</strong></div>
-                            <div class="font-wel"><a href="javascript:;"><strong>【退出】</strong></a></div>
+                            <div class="font-wel">欢迎您！<strong><?php echo session('username') ?></strong></div>
+                            <div class="font-wel"><a href="__URL__/logout"><strong>【退出】</strong></a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="ad-main-comment J_mainContent" id="ad-iframe">
-            <iframe class="J_iframe" name="right" width="100%" height="100%" src="index_v0.html" frameborder="0"
+        <div class="ad-main-comment J_mainContent" id="ad-iframe" >
+            <iframe class="J_iframe" name="right" width="100%" height="100%" src="__MODULE__/report/reportList" frameborder="0"
                     data-id="index_v0.html" seamless></iframe>
         </div>
     </div>

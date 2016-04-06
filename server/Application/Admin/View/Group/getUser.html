@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>文档管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/base.css">
+</head>
+<body leftmargin="8" topmargin="8" background='skin/images/allbg.gif'>
+
+
+<!--  内容列表   -->
+<form name="form2">
+                <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
+                    <tr bgcolor="#E7E7E7">
+                        <td height="24" colspan="6" background="skin/images/tbg.gif">&nbsp;活动：{$activity.title}&nbsp;队员信息 <a href="__URL__/getGroup/activity_id/{$activity_id}" style="float: right">返回团队</a></td>
+                    </tr>
+                    <tr align="center" bgcolor="#FAFAF1" height="22">
+                        <td width="30%">姓名</td>
+                        <td width="30%">手机</td>
+                        <td width="30%">操作</td>
+                    </tr>
+                    <volist name="users" id="v">
+                    <tr align="center" bgcolor="#FAFAF1" height="22">
+                        <td >{$v.real_name}</td>
+                        <td >{$v.mobile}</td>
+                        <td><a href="__URL__/delGroupUser/user_id/{$v.user_id}/group_id/{$group_id}">删除</a></td>
+                    </tr>
+                        </volist>
+                    <tr>
+                        <td align='center' colspan="3"><a href="__URL__/addGroupUser/group_id/{$group_id}/activity_id/{$activity_id}">添加</a></td>
+                    </tr>
+                </table>
+
+</form>
+
+</body>
+</html>

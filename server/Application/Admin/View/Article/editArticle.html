@@ -1,0 +1,60 @@
+<html>
+<head>
+    <link href="__PUBLIC__/css/skin1.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="__PUBLIC__/umeditor/third-party/jquery.min.js"></script>
+    <script type="text/javascript" charset="gbk" src="__PUBLIC__/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="gbk" src="__PUBLIC__/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <title>添加资讯</title>
+</head>
+<body class="rightBody">
+<form action="__URL__/saveArticle" method="post" enctype="multipart/form-data">
+    <div class="p_d_1">
+        <div class="p_d_1_1">
+            <div class="content_info">
+                <div class="c_crumbs"><div><b></b><strong>资讯管理</strong>&nbsp;-&nbsp;编辑资讯</div></div>
+                <div class="tableH2">编辑资讯</div>
+                <table id="baseInfo" width="100%" align="center" class="list" border="0" cellpadding="0" cellspacing="0"  >
+                    <input type="hidden" name="article_id" value="{$article.article_id}">
+                    <tr>
+                        <td class="tdBg" width="200px">资讯标题：</td>
+                        <td>
+                            <input type="text" name="title" value="{$article.title}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">资讯图片：</td>
+                        <td >
+                            <img width="100px" height="100px" src="{$article.pic_url}">
+                            <input type="file" name="imagePath">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">资讯内容：</td>
+                        <td colspan="3">
+                            <script id="container" name="content" type="text/plain" style="width:600px;height:200px;"></script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">类别：</td>
+                        <td>
+                            <input type="text" name="meta" value="{$article.meta}">
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="tc mt20">
+                    <input type="submit" class="btnB2" value="保存" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button"  onclick="javascript:history.go(-1)" class="btnB2" value="返回" />
+                </div>
+            </div></div></div>
+</form>
+<script type="text/javascript">
+    var um = UM.getEditor('container');
+    var value = '{$article.content}';
+    um.execCommand('insertHtml',value);
+</script>
+</body>
+</html>

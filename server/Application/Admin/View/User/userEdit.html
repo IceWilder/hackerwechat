@@ -1,46 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="__PUBLIC__/css/skin1.css" rel="stylesheet" type="text/css"/>
+    <title>添加资讯</title>
 </head>
-<body>
-<table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
-    <tr bgcolor="#E7E7E7">
-        <td height="24" colspan="10" background="skin/images/tbg.gif">&nbsp;用户列表&nbsp;</td>
-    </tr>
-    <tr align="center" bgcolor="#FAFAF1" height="22">
-        <td width="10%">真实姓名</td>
-        <td width="8%">手机号</td>
-        <td width="10%">团队</td>
-        <td width="6%">骇客等级</td>
-        <td width="8%">绑定</td>
-    </tr>
-    <form method="post" action="__SELF__">
-        <tr align='center' bgcolor="#FFFFFF" >
-            <input type="hidden" name="user_id" value="{$user.user_id}"/>
-            <input type="hidden" name="wechat" value="{$user.wechatid}"/>
-            <td><input name="read_name" value="{$user.real_name}"/></td>
-            <td><input name="mobile" value="{$user.mobile}"/></td>
-            <td>
-                <select name="wechatID">
-                    <option>{$user.wechatid}</option>
-                    <volist name="groups" id="group" empty="暂无">
-                        <option value="{$group[group_id]}">{$group[wechatid]}</option>
-                    </volist >
-                </select>
-            </td>
-            <td><input name="hacker_grade" value="{$user.hacker_grade}"/></td>
-            <td>
-            <select>
-                <option value="1" <if condition="$user['is_bind'] eq 1">selected="selected"</if> >绑定</option>
-                <option value="0" <if condition="$user['is_bind'] eq 0">selected="selected"</if> >未绑定</option>
-            </select>
-            </td>
-        <td><input type="submit" value="提交"> </td>
-        </tr>
+<body class="rightBody">
+<form id="form" name="form" action="__SELF__" method="post" enctype="multipart/form-data">
+    <div class="p_d_1">
+        <div class="p_d_1_1">
+            <div class="content_info">
+                <div class="c_crumbs">
+                    <div><b></b><strong>用户管理</strong>&nbsp;-&nbsp;修改</div>
+                </div>
+                <table id="baseInfo" width="100%" align="center" class="list" border="0" cellpadding="2"
+                       cellspacing="2">
+                    <input type="hidden" name="user_id" value="{$user.user_id}"/>
+                    <input type="hidden" name="gid" value="{$user[group_id]}"/>
+                    <tr>
+                        <td class="tdBg" width="200px">真名</td>
+                        <td><input type="text" name="real_name" value="{$user.real_name}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">手机号</td>
+                        <td><input type="text" name="mobile" value="{$user.mobile}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">邮箱</td>
+                        <td><input type="text" name="email" value="{$user.email}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">绑定</td>
+                        <td>
+                            <select name="is_bind">
+                                <option value="1" <if condition="$user.is_bind eq 1">selected='selected'</if> >绑定</option>
+                                <option value="0" <if condition="$user.is_bind eq 0">selected='selected'</if> > 未绑定</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">HackerID</td>
+                        <td><input type="text" name="email" value="{$user.hackerid}"/></td>
+                    </tr>
+                </table>
+                <div class="tc mt20">
+                    <input type="submit" class="btnB2" value="修改"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button" onclick="javascript:history.go(-1)" class="btnB2" value="返回"/>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
-</table>
-
 </body>
 </html>

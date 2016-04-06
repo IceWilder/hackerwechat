@@ -15,26 +15,19 @@
                        cellspacing="2">
                     <tr>
                         <td class="tdBg" width="200px">真名</td>
-                        <td><input  class="tdBg" type="text" name="real_name"/></td>
+                        <td><input type="text" name="real_name"/></td>
                     </tr>
                     <tr>
                         <td class="tdBg" width="200px">手机号</td>
-                        <td><input  class="tdBg" type="text" name="mobile"/></td>
+                        <td><input type="number" required name="mobile"/>{$mobileErr}</td>
                     </tr>
                     <tr>
-                        <td class="tdBg" width="200px">邮箱</td>
-                        <td><input  class="tdBg" type="text" name="email"/></td>
+                        <td class="tdBg" width="200px" >邮箱</td>
+                        <td><input type="text" name="email" value=""/>{$emailErr}</td>
                     </tr>
                     <tr>
-                        <td class="tdBg" width="200px">团队公众号</td>
-                        <td>
-                            <select name="wechatID">
-                                <option value="">无</option>
-                                <volist name="groups" id="group" empty="暂无">
-                                <option value="{$group[group_id]}">{$group[wechatid]}</option>
-                                </volist >
-                            </select>
-                        </td>
+                        <td class="tdBg" width="200px" >HackerID</td>
+                        <td><input type="text" name="hackerID"/></td>
                     </tr>
                 </table>
 

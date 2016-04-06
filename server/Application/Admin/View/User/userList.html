@@ -4,51 +4,83 @@
     <title>文档管理</title>
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/base.css">
 </head>
-<!--<body leftmargin="8" topmargin="8" background='skin/images/allbg.gif'>-->
-
+<body leftmargin="8" topmargin="8" background='skin/images/allbg.gif'>
 <!--  内容列表   -->
-<form name="form2">
-
-    <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
+<table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
+    <form name="searchForm">
+        <tr bgcolor="#E7E7E7">
+            <td>
+                真实姓名：
+            </td>
+            <td>
+                <input name="real_name" value="<?php echo I('get.real_name')?>" />
+            </td>
+            <td>
+                <select name="is_bind">
+                    <option value="2" <?php if(I('get.is_bind',2)==2)echo "selected='selected'"?> >全部</option>
+                    <option value="1" <?php if(I('get.is_bind',2)==1)echo "selected='selected'"?> >已绑定</option>
+                    <option value="0"><?php if(I('get.is_bind',2)==0)echo "selected='selected'"?>未绑定</option>
+                </select>
+            </td>
+            <td>
+                排序方式：
+            </td>
+            <td>
+                <select name="orderby">
+                    <option value="user_id">添加时间</option>
+                    <option value="real_name">姓名</option>
+                    <option value="real_name">微信</option>
+                    <option value="real_name">手机号</option>
+                </select>
+            </td>
+            <td>
+                <select name="orderway">
+                    <option value="asc">增序</option>
+                    <option value="asc">降序</option>
+                </select>
+            </td>
+            <td><input type="submit" value="搜索"/></td>
+        </tr>
+    </form>
+    <form name="form2">
         <tr bgcolor="#E7E7E7">
             <td height="24" colspan="10" background="skin/images/tbg.gif">&nbsp;用户列表&nbsp;</td>
         </tr>
         <tr align="center" bgcolor="#FAFAF1" height="22">
             <td width="6%">ID</td>
-            <td width="4%">选择</td>
-            <td width="10%">头像</td>
-            <td width="10%">微信名</td>
+            <td width="4%">微信名</td>
             <td width="10%">真实姓名</td>
             <td width="8%">手机号</td>
-            <td width="10%">团队</td>
-            <td width="6%">骇客等级</td>
+            <td width="8%">HackerID</td>
             <td width="8%">绑定</td>
             <td width="8%">地区</td>
-            <td width="8%">创建时间</td>
+            <td width="18%">创建时间</td>
             <td width="10%">操作</td>
         </tr>
-        <foreach  name="users" item="user">
+        <foreach name="users" item="user">
 
-        <tr align='center' bgcolor="#FFFFFF" >
-            <td>{$user.user_id}</td>
-            <td><input name="id" type="checkbox" id="id" value="101" class="np"></td>
-            <td align="left"><a href=''><u>touxiang</u></a></td>
-            <td>{$user.weixin_name}</td>
-            <td>{$user.real_name}</td>
-            <td>{$user.mobile}</td>
-            <td>{$user.wechatid}</td>
-            <td>{$user.hacker_grade}</td>
-            <td><if condition="$user.is_bind eq 0">未绑定<else/>已绑定</if></td>
-            <td>{$user.address}</td>
-            <td>{$user.create_time}</td>
-            <td><a href="__URL__/userEdit?user_id={$user.user_id}">编辑</a> | <a href="__URL__/delete?user_id={$user.user_id}">删除</a></td>
-        </tr>
-
+            <tr align='center' bgcolor="#FFFFFF">
+                <td>{$user.user_id}</td>
+                <td>{$user.weixin_name}</td>
+                <td>{$user.real_name}</td>
+                <td>{$user.mobile}</td>
+                <td>{$user.hackerid}</td>
+                <td>
+                    <if condition="$user.is_bind eq 0">未绑定
+                        <else/>
+                        已绑定
+                    </if>
+                </td>
+                <td>{$user.address}</td>
+                <td>{$user.create_time}</td>
+                <td><a href="__URL__/userEdit?user_id={$user.user_id}">编辑</a> | <a
+                        href="__URL__/delete?user_id={$user.user_id}">删除</a></td>
+            </tr>
         </foreach>
-        <td height="36" colspan="10" align="center"><!--翻页代码 --></td>
+        <td height="36" colspan="10" align="center">{$page}</td>
         </tr>
-    </table>
-</form>
+    </form>
+</table>
 
 </body>
 </html>

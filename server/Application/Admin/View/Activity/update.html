@@ -1,0 +1,92 @@
+<html>
+<head>
+    <link href="__PUBLIC__/css/skin1.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="__PUBLIC__/umeditor/third-party/jquery.min.js"></script>
+    <script type="text/javascript" charset="gbk" src="__PUBLIC__/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="gbk" src="__PUBLIC__/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <title>添加资讯</title>
+</head>
+<body class="rightBody">
+
+<form id="form" name="form" action="__URL__/update" method="post" enctype="multipart/form-data">
+    <div class="p_d_1">
+        <div class="p_d_1_1">
+            <div class="content_info">
+                <div class="c_crumbs"><div><b></b><strong>活动管理</strong>&nbsp;-&nbsp;编辑活动</div></div>
+                <div class="tableH2">编辑活动</div>
+                <table id="baseInfo" width="100%" align="center" class="list" border="0" cellpadding="0" cellspacing="0"  >
+                    <input type="hidden" name ="activity_id" value="{$activity.activity_id}">
+                    <tr>
+                        <td class="tdBg" width="200px">活动主题：</td>
+                        <td>
+                            <input type="text" name="title" value="{$activity.title}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">主讲人：</td>
+                        <td >
+                            <input type="text" name="presenter" value="{$activity.presenter}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">简介：</td>
+                        <td colspan="3">
+                            <script id="container" name="activity_intro" type="text/plain" style="width:600px; height:200px;"></script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">活动开始时间：</td>
+                        <td >
+                             <input type="text" name="start_time" value="{$activity.start_time}" onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd HH:mm:ss'});"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">报名截止时间：</td>
+                        <td >
+                           <input type="text" name="expirt_time" value=" {$activity.expirt_time} " onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd HH:mm:ss'});"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">创建时间：</td>
+                        <td colspan="3">
+                            <input type="hidden" name="create_time" value="{$activity.create_time}" />{$activity.create_time}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">活动地址：</td>
+                        <td >
+                            <input type="text" name="address" value="{$activity.address}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">图片：</td>
+                        <td >
+                            <img  width="50px" height="60px" src="{$activity.pic_url}">
+                            <input type="file" name="pic">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdBg" width="200px">图片标题：</td>
+                        <td >
+                            <input type="text" name="pic_title" value="{$activity.pic_title}">
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="tc mt20">
+                    <input type="submit" class="btnB2" value="提交" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button"  onclick="javascript:history.go(-1)" class="btnB2" value="返回" />
+                </div>
+            </div></div></div>
+    <script src="__PUBLIC__/datepicker/WdatePicker.js"></script>
+    <script type="text/javascript">
+        var um = UM.getEditor('container');
+        um.setHeight(200);
+        um.execCommand('insertHtml','{$activity.activity_intro}');
+    </script>
+</form>
+</body>
+</html>

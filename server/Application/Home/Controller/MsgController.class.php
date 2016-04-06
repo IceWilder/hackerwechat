@@ -30,7 +30,7 @@ class MsgController extends Controller{
          exit();
      }
         else{
-            returnApiSuccess("",$msg);
+            returnApiSuccess("我的消息",$msg);
         }
     }
 }
